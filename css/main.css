@@ -172,6 +172,95 @@ p  { color: var(--text-2); }
 .section-divider        { width: 36px; height: 3px; background: var(--yt-red); border-radius: 2px; margin: 0 auto 16px; }
 
 /* ========================
+   AD SLOTS
+   ======================== */
+.ad-slot {
+  --ad-min-height: 250px;
+  width: min(100%, 970px);
+  min-height: var(--ad-min-height);
+  margin: clamp(24px,5vw,44px) auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, rgba(255,0,0,0.035), transparent 55%), var(--surface);
+  color: var(--text-4);
+  position: relative;
+}
+
+.ad-slot::before {
+  content: "Advertisement";
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-4);
+  opacity: 0.72;
+}
+
+.ad-slot-inner {
+  width: 100%;
+  min-height: calc(var(--ad-min-height) - 2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ad-banner { --ad-min-height: 250px; }
+.ad-rectangle {
+  --ad-min-height: 280px;
+  width: min(100%, 336px);
+}
+.ad-sidebar {
+  --ad-min-height: 600px;
+  width: min(100%, 300px);
+}
+
+.ad-slot.is-waiting .ad-slot-inner,
+.ad-slot.is-loading .ad-slot-inner {
+  opacity: 0.34;
+}
+
+.ad-slot.is-waiting .ad-slot-inner::after,
+.ad-slot.is-loading .ad-slot-inner::after {
+  content: "";
+  width: 48px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(90deg, var(--border-light), var(--border), var(--border-light));
+  background-size: 220% 100%;
+  animation: ad-placeholder 1.6s ease-in-out infinite;
+}
+
+.ad-slot.no-consent .ad-slot-inner::after,
+.ad-slot.is-empty .ad-slot-inner::after {
+  content: "";
+}
+
+.ad-slot.is-empty,
+.ad-slot.no-consent {
+  background: transparent;
+}
+
+@keyframes ad-placeholder {
+  from { background-position: 100% 0; }
+  to { background-position: 0 0; }
+}
+
+@media (max-width: 700px) {
+  .ad-slot {
+    --ad-min-height: 180px;
+    margin: 22px auto;
+  }
+  .ad-rectangle { --ad-min-height: 250px; }
+}
+
+/* ========================
    BUTTONS
    ======================== */
 .btn {

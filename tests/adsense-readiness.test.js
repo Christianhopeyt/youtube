@@ -35,7 +35,7 @@ function htmlFiles(directory) {
   });
 }
 
-test('CookieYes loads once in every public head before controlled Google scripts', () => {
+test('CookieYes loads once and advertising uses the local ad manager', () => {
   htmlFiles(root).forEach(file => {
     if (file.endsWith('googlece3ace88da98e238.html')) return;
     const html = fs.readFileSync(file, 'utf8');
@@ -45,14 +45,33 @@ test('CookieYes loads once in every public head before controlled Google scripts
     const head = html.match(/<head>[\s\S]*?<\/head>/i)?.[0] || '';
     assert.match(head, /id="cookieyes"/, relative);
     assert.ok(head.indexOf('id="cookieyes"') < head.indexOf('googletagmanager.com/gtag'), relative);
-    assert.ok(head.indexOf('id="cookieyes"') < head.indexOf('pagead2.googlesyndication.com'), relative);
     assert.match(head, /type="text\/plain" data-cookieyes="analytics"/, relative);
-    assert.match(head, /type="text\/plain" data-cookieyes="advertisement"/, relative);
+    assert.doesNotMatch(html, /pagead2\.googlesyndication\.com|adsbygoogle/, relative);
+    assert.match(html, /<script src="\/js\/ads\.js" defer><\/script>/, relative);
+    assert.match(html, /<script src="\/js\/ad-manager\.js" defer><\/script>/, relative);
+    assert.ok(html.indexOf('/js/ads.js') < html.indexOf('/js/ad-manager.js'), relative);
     assert.doesNotMatch(html, /id="cookie-banner"|id="cookie-accept"|id="cookie-reject"/, relative);
   });
 
   const app = fs.readFileSync(path.join(root, 'js', 'app.js'), 'utf8');
   assert.doesNotMatch(app, /ConsentManager|CookieBanner|yta-cookies/);
+  const config = fs.readFileSync(path.join(root, 'js', 'ads.js'), 'utf8');
+  const manager = fs.readFileSync(path.join(root, 'js', 'ad-manager.js'), 'utf8');
+  assert.match(config, /provider:\s*'hilltopads'/);
+  assert.match(config, /lazyLoad:\s*true/);
+  assert.match(manager, /IntersectionObserver/);
+  assert.match(manager, /HilltopAds Integration/);
+  [
+    'home-below-hero',
+    'home-between-features',
+    'home-above-footer',
+    'analyzer-below-results',
+    'blog-after-intro',
+    'blog-middle-article',
+    'blog-before-conclusion',
+    'creator-after-public-stats',
+    'niche-below-charts'
+  ].forEach(placement => assert.match(manager, new RegExp(placement), placement));
 });
 
 test('unsupported trust claims are absent from public pages', () => {
