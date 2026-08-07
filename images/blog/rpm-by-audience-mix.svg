@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" role="img" aria-labelledby="t">
+  <title id="t">Illustrative RPM ranges by audience mix</title>
+  <rect width="800" height="440" rx="20" fill="#0f1117"/>
+  <text x="400" y="44" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" fill="#ffffff">Illustrative RPM ranges by audience mix</text>
+  <text x="400" y="68" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#9aa0a6">Hypothetical scenario ranges, not YouTube Studio data</text>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="150" y="104" text-anchor="middle" font-size="13" fill="#e8eaed">Mostly US/UK</text>
+    <rect x="300" y="80" width="12" height="150" rx="4" fill="#ff0000"/>
+    <rect x="330" y="40" width="12" height="190" rx="4" fill="#ff6b6b"/>
+    <rect x="360" y="60" width="12" height="170" rx="4" fill="#d0434c"/>
+
+    <text x="150" y="180" text-anchor="middle" font-size="13" fill="#e8eaed">Mixed English-speaking</text>
+    <rect x="460" y="90" width="12" height="120" rx="4" fill="#ff0000"/>
+    <rect x="490" y="70" width="12" height="140" rx="4" fill="#ff6b6b"/>
+    <rect x="520" y="80" width="12" height="130" rx="4" fill="#d0434c"/>
+
+    <text x="150" y="256" text-anchor="middle" font-size="13" fill="#e8eaed">Global entertainment</text>
+    <rect x="620" y="120" width="12" height="80" rx="4" fill="#ff0000"/>
+    <rect x="650" y="100" width="12" height="100" rx="4" fill="#ff6b6b"/>
+    <rect x="680" y="110" width="12" height="90" rx="4" fill="#d0434c"/>
+
+    <text x="150" y="332" text-anchor="middle" font-size="13" fill="#e8eaed">Shorts-heavy global</text>
+    <rect x="780" y="150" width="12" height="40" rx="4" fill="#ff0000"/>
+    <rect x="810" y="140" width="12" height="50" rx="4" fill="#ff6b6b"/>
+    <rect x="840" y="145" width="12" height="45" rx="4" fill="#d0434c"/>
+  </g>
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#9aa0a6">
+    <line x1="120" y1="80" x2="120" y2="150" stroke="#3a4049" stroke-width="2"/>
+    <line x1="108" y1="80" x2="132" y2="80" stroke="#3a4049" stroke-width="2"/>
+    <text x="118" y="76" text-anchor="middle">Low</text>
+    <line x1="120" y1="40" x2="120" y2="110" stroke="#3a4049" stroke-width="2"/>
+    <line x1="108" y1="40" x2="132" y2="40" stroke="#3a4049" stroke-width="2"/>
+    <text x="118" y="36" text-anchor="middle">High</text>
+  </g>
+  <text x="400" y="412" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#9aa0a6">A small share of high-value countries lifts a global channel's weighted RPM</text>
+</svg>

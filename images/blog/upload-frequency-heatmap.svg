@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" role="img" aria-labelledby="t">
+  <title id="t">Upload frequency heatmap by weekday and hour from public upload timestamps</title>
+  <rect width="800" height="440" rx="20" fill="#0f1117"/>
+  <text x="400" y="44" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" fill="#ffffff">Public upload frequency: day x hour</text>
+  <text x="400" y="68" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#9aa0a6">Timestamps are public upload data, not viewer behavior</text>
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#e8eaed">
+    <text x="86" y="104" text-anchor="end" fill="#9aa0a6">Mon</text>
+    <text x="86" y="144" text-anchor="end" fill="#9aa0a6">Tue</text>
+    <text x="86" y="184" text-anchor="end" fill="#9aa0a6">Wed</text>
+    <text x="86" y="224" text-anchor="end" fill="#9aa0a6">Thu</text>
+    <text x="86" y="264" text-anchor="end" fill="#9aa0a6">Fri</text>
+    <text x="86" y="304" text-anchor="end" fill="#9aa0a6">Sat</text>
+    <text x="86" y="344" text-anchor="end" fill="#9aa0a6">Sun</text>
+  </g>
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#9aa0a6" text-anchor="middle">
+    <text x="112" y="376">6am</text><text x="176" y="376">9am</text><text x="240" y="376">12pm</text><text x="304" y="376">3pm</text><text x="368" y="376">6pm</text><text x="432" y="376">9pm</text><text x="496" y="376">12am</text>
+  </g>
+  <g>
+    <rect x="100" y="86" width="56" height="36" rx="6" fill="#1d2128"/><rect x="164" y="86" width="56" height="36" rx="6" fill="#1d2128"/><rect x="228" y="86" width="56" height="36" rx="6" fill="#2a1113"/><rect x="292" y="86" width="56" height="36" rx="6" fill="#40161a"/><rect x="356" y="86" width="56" height="36" rx="6" fill="#7a2429"/><rect x="420" y="86" width="56" height="36" rx="6" fill="#a8323a"/><rect x="484" y="86" width="56" height="36" rx="6" fill="#2a1113"/>
+    <rect x="100" y="126" width="56" height="36" rx="6" fill="#1d2128"/><rect x="164" y="126" width="56" height="36" rx="6" fill="#1d2128"/><rect x="228" y="126" width="56" height="36" rx="6" fill="#2a1113"/><rect x="292" y="126" width="56" height="36" rx="6" fill="#40161a"/><rect x="356" y="126" width="56" height="36" rx="6" fill="#7a2429"/><rect x="420" y="126" width="56" height="36" rx="6" fill="#a8323a"/><rect x="484" y="126" width="56" height="36" rx="6" fill="#2a1113"/>
+    <rect x="100" y="166" width="56" height="36" rx="6" fill="#1d2128"/><rect x="164" y="166" width="56" height="36" rx="6" fill="#2a1113"/><rect x="228" y="166" width="56" height="36" rx="6" fill="#40161a"/><rect x="292" y="166" width="56" height="36" rx="6" fill="#7a2429"/><rect x="356" y="166" width="56" height="36" rx="6" fill="#a8323a"/><rect x="420" y="166" width="56" height="36" rx="6" fill="#d0434c"/><rect x="484" y="166" width="56" height="36" rx="6" fill="#40161a"/>
+    <rect x="100" y="206" width="56" height="36" rx="6" fill="#2a1113"/><rect x="164" y="206" width="56" height="36" rx="6" fill="#40161a"/><rect x="228" y="206" width="56" height="36" rx="6" fill="#7a2429"/><rect x="292" y="206" width="56" height="36" rx="6" fill="#a8323a"/><rect x="356" y="206" width="56" height="36" rx="6" fill="#d0434c"/><rect x="420" y="206" width="56" height="36" rx="6" fill="#e65a63"/><rect x="484" y="206" width="56" height="36" rx="6" fill="#a8323a"/>
+    <rect x="100" y="246" width="56" height="36" rx="6" fill="#2a1113"/><rect x="164" y="246" width="56" height="36" rx="6" fill="#40161a"/><rect x="228" y="246" width="56" height="36" rx="6" fill="#7a2429"/><rect x="292" y="246" width="56" height="36" rx="6" fill="#a8323a"/><rect x="356" y="246" width="56" height="36" rx="6" fill="#e65a63"/><rect x="420" y="246" width="56" height="36" rx="6" fill="#ff7b84"/><rect x="484" y="246" width="56" height="36" rx="6" fill="#d0434c"/>
+    <rect x="100" y="286" width="56" height="36" rx="6" fill="#1d2128"/><rect x="164" y="286" width="56" height="36" rx="6" fill="#1d2128"/><rect x="228" y="286" width="56" height="36" rx="6" fill="#2a1113"/><rect x="292" y="286" width="56" height="36" rx="6" fill="#40161a"/><rect x="356" y="286" width="56" height="36" rx="6" fill="#7a2429"/><rect x="420" y="286" width="56" height="36" rx="6" fill="#a8323a"/><rect x="484" y="286" width="56" height="36" rx="6" fill="#2a1113"/>
+    <rect x="100" y="326" width="56" height="36" rx="6" fill="#1d2128"/><rect x="164" y="326" width="56" height="36" rx="6" fill="#1d2128"/><rect x="228" y="326" width="56" height="36" rx="6" fill="#1d2128"/><rect x="292" y="326" width="56" height="36" rx="6" fill="#2a1113"/><rect x="356" y="326" width="56" height="36" rx="6" fill="#40161a"/><rect x="420" y="326" width="56" height="36" rx="6" fill="#7a2429"/><rect x="484" y="326" width="56" height="36" rx="6" fill="#1d2128"/>
+  </g>
+  <text x="400" y="418" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#9aa0a6">Darker cells = more uploads in that slot. Notice the repeatable weekday-evening pattern.</text>
+</svg>

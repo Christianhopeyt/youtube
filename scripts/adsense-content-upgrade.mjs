@@ -854,7 +854,7 @@ Audit/update date: ${displayDate}
 
 - The French build was completed locally for the three new indexed articles because the external translation endpoint was unavailable in the sandbox.
 - Quarantined articles should remain noindex until each receives a full rewrite or is merged into stronger guides.
-- Live DNS, consent, and Search Console validation should still be checked before resubmitting.
+- DNS records are now consistent (apex and \`www\` point to Netlify targets as of August 7, 2026); consent and Search Console validation should still be checked before resubmitting.
 
 ## Recommended pages for manual indexing
 

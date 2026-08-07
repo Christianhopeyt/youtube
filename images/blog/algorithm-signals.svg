@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" role="img" aria-labelledby="t">
+  <title id="t">The five signals YouTube ranks videos on in 2026</title>
+  <rect width="800" height="440" rx="20" fill="#0f1117"/>
+  <text x="400" y="46" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" fill="#ffffff">What the recommendation system measures in 2026</text>
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#e8eaed" text-anchor="middle">
+    <rect x="40" y="90" width="136" height="120" rx="12" fill="#1d2128" stroke="#ff0000" stroke-width="2"/>
+    <text x="108" y="120" font-weight="700" fill="#ff6b6b">Click-through</text>
+    <text x="108" y="144">Title + thumbnail</text>
+    <text x="108" y="164">earn the click from</text>
+    <text x="108" y="184">cold audiences</text>
+
+    <rect x="192" y="90" width="136" height="120" rx="12" fill="#1d2128" stroke="#ff0000" stroke-width="2"/>
+    <text x="260" y="120" font-weight="700" fill="#ff6b6b">Retention</text>
+    <text x="260" y="144">How much of each</text>
+    <text x="260" y="164">video viewers watch</text>
+    <text x="260" y="184">and where they drop</text>
+
+    <rect x="344" y="90" width="136" height="120" rx="12" fill="#1d2128" stroke="#ff0000" stroke-width="2"/>
+    <text x="412" y="120" font-weight="700" fill="#ff6b6b">Session</text>
+    <text x="412" y="144">Does the video lead</text>
+    <text x="412" y="164">into another watch,</text>
+    <text x="412" y="184">or end the visit?</text>
+
+    <rect x="496" y="90" width="136" height="120" rx="12" fill="#1d2128" stroke="#ff0000" stroke-width="2"/>
+    <text x="564" y="120" font-weight="700" fill="#ff6b6b">Satisfaction</text>
+    <text x="564" y="144">Viewer feedback,</text>
+    <text x="564" y="164">surveys, and</text>
+    <text x="564" y="184">post-watch behavior</text>
+
+    <rect x="648" y="90" width="136" height="120" rx="12" fill="#1d2128" stroke="#ff0000" stroke-width="2"/>
+    <text x="716" y="120" font-weight="700" fill="#ff6b6b">Velocity</text>
+    <text x="716" y="144">Early likes, comments,</text>
+    <text x="716" y="164">and shares in the</text>
+    <text x="716" y="184">first 48 hours</text>
+  </g>
+  <rect x="240" y="280" width="320" height="70" rx="35" fill="#ff0000"/>
+  <text x="400" y="308" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#ffffff">Predicted watch time + viewer satisfaction</text>
+  <text x="400" y="334" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#ffffff">decides whether a video is shown to more people</text>
+  <g stroke="#3a4049" stroke-width="3">
+    <line x1="108" y1="210" x2="330" y2="286"/>
+    <line x1="260" y1="210" x2="380" y2="286"/>
+    <line x1="412" y1="210" x2="400" y2="280"/>
+    <line x1="564" y1="210" x2="440" y2="286"/>
+    <line x1="716" y1="210" x2="470" y2="286"/>
+  </g>
+  <text x="400" y="404" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#9aa0a6">Search, Browse (home), Suggested, and Shorts each weight these signals differently</text>
+</svg>

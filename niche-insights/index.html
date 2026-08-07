@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <!-- Start cookieyes banner -->
+  <script>if(location.hostname==='localhost'||location.hostname==='127.0.0.1'){var cy=document.currentScript;if(cy&&cy.nextElementSibling&&cy.nextElementSibling.id==='cookieyes')cy.nextElementSibling.remove();}</script>
   <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/bb75bdf1ed45084387a6477e5939d0a1/script.js"></script>
   <!-- End cookieyes banner -->
   <script type="text/plain" data-cookieyes="analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-5BCXGE5L5G"></script>
@@ -60,7 +61,7 @@
     .related-grid .card{text-decoration:none;padding:18px}
     .article-trust-note{max-width:760px;margin:40px auto 8px;padding:20px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--bg-2);color:var(--text-2);line-height:1.7}
   </style>
-  <link rel="canonical" href="https://norcanto.com/niche-insights" />
+                <link rel="canonical" href="https://norcanto.com/niche-insights" />
   <link rel="alternate" hreflang="en" href="https://norcanto.com/niche-insights" />
   <link rel="alternate" hreflang="fr" href="https://norcanto.com/fr/niche-insights" />
   <link rel="alternate" hreflang="x-default" href="https://norcanto.com/niche-insights" />
@@ -72,7 +73,7 @@
 <header id="header">
   <div class="container"><div class="header-inner">
     <a href="/niche-insights" class="header-logo"><img src="/images/norlytics-logo.png" alt="Norlytics" class="site-logo-img" loading="eager" />Norlytics</a>
-    <nav class="header-nav"></nav>
+    <nav class="header-nav" aria-label="Primary navigation"><a href="/#analyzer" data-nav="analysis">Channel Analysis</a><a href="/creator-dashboard" data-nav="creator">Creator Dashboard</a><a href="/#calculator" data-nav="calculator">Calculator</a><a href="/niche-insights" data-nav="niche" class="active" aria-current="page">Niche Insights</a><a href="/blog" data-nav="blog">Blog</a><a href="/privacy" data-nav="privacy">Privacy</a><a href="/about" data-nav="about">About</a></nav>
     <div class="header-controls">
       <div class="lang-switcher"><button class="lang-btn active" data-lang="EN">EN</button><button class="lang-btn" data-lang="FR">FR</button></div>
       <button class="theme-toggle" aria-label="Toggle theme"></button>
@@ -107,10 +108,17 @@
           <div class="niche-field">
             <label for="niche-region" data-ni="region">Audience region</label>
             <select id="niche-region">
-              <option value="US">United States</option><option value="GB">United Kingdom</option><option value="CA">Canada</option>
-              <option value="AU">Australia</option><option value="FR">France</option><option value="DE">Germany</option>
-              <option value="ES">Spain</option><option value="BR">Brazil</option><option value="IN">India</option>
-              <option value="MX">Mexico</option><option value="JP">Japan</option><option value="KR">South Korea</option>
+              <option value="US">United States</option><option value="AR">Argentina</option><option value="AU">Australia</option><option value="AT">Austria</option>
+              <option value="BE">Belgium</option><option value="BR">Brazil</option><option value="CA">Canada</option><option value="CL">Chile</option>
+              <option value="CO">Colombia</option><option value="CZ">Czechia</option><option value="EG">Egypt</option><option value="FR">France</option>
+              <option value="DE">Germany</option><option value="GR">Greece</option><option value="HK">Hong Kong</option><option value="HU">Hungary</option>
+              <option value="IN">India</option><option value="ID">Indonesia</option><option value="IE">Ireland</option><option value="IL">Israel</option>
+              <option value="IT">Italy</option><option value="JP">Japan</option><option value="KR">South Korea</option><option value="MY">Malaysia</option>
+              <option value="MX">Mexico</option><option value="NL">Netherlands</option><option value="NZ">New Zealand</option><option value="NO">Norway</option>
+              <option value="PE">Peru</option><option value="PH">Philippines</option><option value="PL">Poland</option><option value="PT">Portugal</option>
+              <option value="RO">Romania</option><option value="SA">Saudi Arabia</option><option value="SG">Singapore</option><option value="ZA">South Africa</option>
+              <option value="ES">Spain</option><option value="SE">Sweden</option><option value="CH">Switzerland</option><option value="TH">Thailand</option>
+              <option value="TR">Türkiye</option><option value="UA">Ukraine</option><option value="GB">United Kingdom</option><option value="VN">Vietnam</option>
             </select>
           </div>
           <div class="niche-field">
@@ -121,6 +129,7 @@
         <p class="niche-help" id="niche-help" data-ni="help">Analytics use up to 50 recent relevant public videos from the last 90 days. No fake analytics are generated.</p>
         <p class="niche-status" id="niche-status" role="status" aria-live="polite"></p>
       </form>
+      <div class="niche-recent" id="niche-recent" hidden></div>
     </div>
   </section>
 
@@ -165,10 +174,11 @@
     <div class="container">
       <div class="niche-report-header">
         <div><h2 id="report-title"></h2><p class="niche-report-meta" id="report-meta"></p></div>
-        <span class="badge badge-gray confidence-badge" id="confidence-badge"></span>
+        <div class="niche-report-actions"><span class="badge badge-gray confidence-badge" id="confidence-badge"></span><button type="button" class="btn btn-secondary" id="niche-share-btn" data-ni="share_btn">Copy report</button></div>
       </div>
       <div class="source-notices" id="source-notices"></div>
       <div class="niche-score-grid" id="score-grid"></div>
+      <div class="niche-window-row"><span data-ni="window_label">Analysis window</span><div class="niche-window-select" id="niche-window-select" role="group" aria-label="Analysis window"><button type="button" data-window="7">7d</button><button type="button" data-window="30">30d</button><button type="button" data-window="90" aria-pressed="true">90d</button></div></div>
       <div class="niche-metrics-grid" id="metrics-grid"></div>
       <div class="niche-layout">
         <div class="niche-stack">
@@ -181,6 +191,21 @@
           <section class="niche-panel"><h3 data-ni="patterns">Common title patterns</h3><div class="pattern-list" id="pattern-list"></div></section>
           <section class="niche-panel"><h3 data-ni="limitations">Limitations</h3><ul class="limitations-list" id="limitations-list"></ul></section>
         </aside>
+      </div>
+    </div>
+  </section><section class="section-sm niche-page-education" aria-labelledby="niche-demand-title">
+    <div class="container">
+      <div class="article-body">
+        <div class="section-divider"></div>
+        <h2 id="niche-demand-title">Evaluating Demand and Saturation in a Niche</h2>
+        <p>The most expensive mistake a creator can make is confusing a crowded topic with a saturated one. A topic can be crowded with video after video and still leave room for a new channel, while another topic with far fewer videos can be fully captured by a handful of dominant channels. Saturation is not about how much content exists; it is about whether the existing supply already satisfies the audience's demand.</p>
+        <h3>Read the scores as a system, not in isolation</h3>
+        <p>The Trend, Competition, and Opportunity scores in the report only become meaningful when you compare them. High trend with low competition usually signals an early-stage topic that is still growing faster than new entrants can fill it — the classic window for a new channel. High trend with high competition means the topic is active but the top performers are entrenched, so a new channel needs a sharper angle than the incumbents. Low trend with low competition is the ambiguous case: it may be an undiscovered niche or simply a topic without enough audience; the fastest way to tell the difference is to open the fast-performing videos and check whether recent uploads actually earned meaningful views.</p>
+        <h3>The dispersion check for saturation</h3>
+        <p>To judge saturation from public data, look at the distribution of views across the sampled videos. A healthy, open niche shows wide dispersion: small and medium channels appear alongside the big names, and engagement is not reserved for the top few. A saturated niche shows tight clustering — the same handful of channels dominate the fast-performing list, and mid-sized channels stay stuck at a low view ceiling regardless of content quality. When the fast-performing videos section keeps returning the same channels, you are looking at a market where the audience has already chosen its favorites and is not actively sampling new ones.</p>
+        <h3>Checking content gaps and repeatability</h3>
+        <p>Demand is only worth acting on if it can be met repeatedly. After a report, filter the common keywords and title patterns for two signals: topics that recur often enough to support a series, and angles that appear rarely even though adjacent videos perform well. A keyword that shows up across many high-view videos is a proven demand center you can build a content pillar around. A gap — strong demand keywords that no top video serves directly — is the highest-value finding because it is a demand center with weak incumbent supply. Repeatability is the other half of the equation: a single winning topic is a video, not a niche. You want at least 20 to 30 distinct video angles that can each plausibly pull an audience, otherwise the niche will exhaust you in a few months regardless of how strong its demand looks today.</p>
+        <p>Use the report as a starting point rather than a verdict. Verify the biggest opportunities by opening three or four fast-performing videos directly, then validate with a small pilot set of your own uploads before committing long-term to a topic.</p>
       </div>
     </div>
   </section><section class="section-sm niche-page-education" aria-labelledby="niche-education-title">
@@ -206,8 +231,8 @@
   </section>
 </main>
 
-<footer id="footer"><div class="container"><div class="footer-bottom"><div class="footer-copy">© 2026 Norlytics.</div><div class="footer-legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/contact">Contact</a></div></div></div></footer>
-<!-- HilltopAds Integration -->
+<footer id="footer"><div class="container"><div class="footer-top"><div class="footer-brand"><div class="footer-logo"><img src="/images/norlytics-logo.png" alt="Norlytics" class="site-logo-img" loading="lazy" decoding="async" /><div class="footer-logo-text">Norlytics</div></div><p class="footer-desc">Free YouTube channel revenue analysis and performance insights. Powered by Norcanto.</p></div><div><div class="footer-col-title">Tools</div><div class="footer-links"><a href="/#analyzer">Channel Analyzer</a><a href="/#calculator">Revenue Calculator</a><a href="/creator-dashboard">Creator Dashboard</a><a href="/niche-insights">Niche Insights</a><a href="/blog">Blog</a></div></div><div><div class="footer-col-title">Norcanto</div><div class="footer-links"><a href="/about">About</a></div></div><div><div class="footer-col-title">Legal</div><div class="footer-links"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Use</a><a href="/contact">Contact</a><a href="/cookies">Cookies</a></div></div></div><div class="footer-bottom"><div class="footer-copy">© 2026 Norlytics. All rights reserved.</div><div class="footer-legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/contact">Contact</a></div></div></div></footer>
+<!-- Google AdSense Integration -->
 <script src="/js/ads.js" defer></script><script src="/js/ad-manager.js" defer></script><script src="../js/app.js" defer></script>
 <script src="../js/niche-insights.js" defer></script>
 </body>

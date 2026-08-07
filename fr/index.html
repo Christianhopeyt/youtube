@@ -1,7 +1,8 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <!-- Start cookieyes banner -->
+  <script>if(location.hostname==='localhost'||location.hostname==='127.0.0.1'){var cy=document.currentScript;if(cy&&cy.nextElementSibling&&cy.nextElementSibling.id==='cookieyes')cy.nextElementSibling.remove();}</script>
   <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/bb75bdf1ed45084387a6477e5939d0a1/script.js"></script>
   <!-- End cookieyes banner -->
   <script type="text/plain" data-cookieyes="analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-5BCXGE5L5G"></script>
@@ -58,7 +59,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#ff0000" />
-    <link rel="canonical" href="https://norcanto.com/fr" />
+                  <link rel="canonical" href="https://norcanto.com/fr" />
   <link rel="alternate" hreflang="en" href="https://norcanto.com/" />
   <link rel="alternate" hreflang="fr" href="https://norcanto.com/fr" />
   <link rel="alternate" hreflang="x-default" href="https://norcanto.com/" />
@@ -77,12 +78,14 @@
         Norlytics
       </a>
 
-      <nav class="header-nav">
-        <a href="#analyzer" class="active">Analyse des canaux</a>
-        <a href="#calculator">Calculatrice</a>
-        <a href="/fr/blog">Blog</a><a href="/fr/blog/youtube-rpm-vs-cpm">RPM contre CPM</a><a href="/fr/blog/youtube-channel-audit-checklist">Liste de contrôle d'audit de chaîne</a><a href="/fr/blog/youtube-niche-validation-framework">Validation de niche</a>
-        <a href="/fr/privacy">Confidentialité</a>
-        <a href="/fr/about">À propos</a>
+      <nav class="header-nav" aria-label="Navigation principale">
+        <a href="/fr#analyzer" data-nav="analysis">Analyse des canaux</a>
+        <a href="/fr/creator-dashboard" data-nav="creator">Tableau de bord du créateur</a>
+        <a href="/fr#calculator" data-nav="calculator">Calculatrice</a>
+        <a href="/fr/niche-insights" data-nav="niche">Perspectives de niche</a>
+        <a href="/fr/blog" data-nav="blog">Blog</a>
+        <a href="/fr/privacy" data-nav="privacy">Confidentialité</a>
+        <a href="/fr/about" data-nav="about">À propos</a>
       </nav>
 
       <div class="header-controls">
@@ -161,7 +164,7 @@
 </section>
 
 <!-- ======================== ANALYZER ======================== -->
-<section id="analyzer" style="padding:0 0 80px;">
+<section id="analyzer" class="analyzer-section">
   <div class="container">
     <div class="analyzer-card reveal">
       <div class="analyzer-label" id="analyzer-label">Analyse de la chaîne YouTube</div>
@@ -248,11 +251,34 @@
       </div>
       <div class="stat-card">
         <div class="stat-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </div>
+        <div class="stat-card-value" id="res-engagement">—</div>
+        <div class="stat-card-label" id="stat-label-engagement">Taux d'engagement</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         </div>
         <div class="stat-card-value" id="res-created">—</div>
         <div class="stat-card-label" id="stat-label-created">Chaîne créée</div>
       </div>
+    </div>
+
+    <!-- Report actions -->
+    <div class="results-actions" id="results-actions">
+      <button type="button" class="btn btn-secondary" id="res-share-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        <span id="res-share-btn-text">Partager le rapport</span>
+      </button>
+      <button type="button" class="btn btn-secondary" id="res-print-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        <span id="res-print-btn-text">Exporter un PDF</span>
+      </button>
+      <button type="button" class="btn btn-secondary" id="res-compare-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+        <span id="res-compare-btn-text">Comparer</span>
+      </button>
     </div>
 
     <aside class="creator-dashboard-cta">
@@ -262,7 +288,7 @@
 
     <!-- Revenue Cards -->
     <div class="revenue-section reveal reveal-delay-1">
-      <h3 style="margin-bottom:20px; font-family:var(--font-display);">Revenu estimé</h3>
+      <h3 class="revenue-title">Revenu estimé</h3>
       <div class="revenue-grid">
         <div class="revenue-card">
           <div class="revenue-card-period">
@@ -309,9 +335,9 @@
         <div class="chart-title">Projection des revenus mensuels</div>
         <div class="revenue-chart" id="revenue-chart"></div>
         <div class="chart-legend">
-          <div class="legend-item"><div class="legend-dot" style="background:var(--gray-300)"></div>Minimum</div>
-          <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div>Moyenne</div>
-          <div class="legend-item"><div class="legend-dot" style="background:var(--yt-red)"></div>Maximum</div>
+          <div class="legend-item"><div class="legend-dot min"></div>Minimum</div>
+          <div class="legend-item"><div class="legend-dot avg"></div>Moyenne</div>
+          <div class="legend-item"><div class="legend-dot max"></div>Maximum</div>
         </div>
       </div>
     </div>
@@ -321,7 +347,7 @@
       <div class="score-header">
         <div>
           <div class="score-title" id="res-score-title">Score de potentiel commercial</div>
-          <div style="font-size:0.82rem;color:var(--text-3);margin-top:4px;" id="res-score-subtitle">Potentiel de monétisation composite</div>
+          <div class="score-subtitle" id="res-score-subtitle">Potentiel de monétisation composite</div>
         </div>
         <div class="score-display">
           <div>
@@ -357,11 +383,56 @@
         </div>
       </div>
     </div>
+
+    <!-- Top Videos -->
+    <div class="top-videos-section reveal" id="top-videos-section" hidden>
+      <h3 class="revenue-title" id="top-videos-title">Meilleures vidéos</h3>
+      <p class="section-note" id="top-videos-note">Classé par vues quotidiennes moyennes sur les mises en ligne récentes.</p>
+      <div class="top-videos-list" id="res-top-videos-list"></div>
+    </div>
+
+    <!-- Compare -->
+    <div class="compare-section reveal" id="compare-section" hidden>
+      <div class="compare-head">
+        <div>
+          <h3 class="revenue-title" id="compare-title">Comparez avec une autre chaîne</h3>
+          <p class="section-note" id="compare-hint">Collez l'URL d'une deuxième chaîne pour comparer côte à côte.</p>
+        </div>
+      </div>
+      <div class="compare-input-row">
+        <input type="text" id="compare-input" class="analyzer-input" placeholder="Collez une deuxième URL de chaîne..." autocomplete="off" spellcheck="false" />
+        <button type="button" id="compare-go" class="analyze-btn"><span id="compare-go-text">Comparer</span></button>
+      </div>
+      <div class="compare-result" id="compare-result" hidden></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== EDUCATION: RPM & REVENUE GUIDE ======================== -->
+<section class="section section-top-border" id="revenue-guide">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-divider"></div>
+      <h2 id="guide-title">Comprendre le RPM, le CPM et les revenus publicitaires YouTube</h2>
+      <p id="guide-subtitle">Que signifient les chiffres de votre rapport – et comment les améliorer</p>
+    </div>
+
+    <h3>Qu'est-ce que le RPM et comment est-il calculé ?</h3>
+    <p>Le RPM (Revenue Per Mille) est le montant qu'un créateur gagne pour 1 000 vues vidéo monétisées. Le Programme Partenaire YouTube le calcule en divisant le total des revenus estimés pour une période de référence par le nombre total de lectures, puis en multipliant par 1 000. Le RPM n'est pas la même chose que le CPM : le CPM est le prix qu'un annonceur paie pour 1 000 impressions publicitaires, tandis que le RPM est le montant net que le créateur conserve après prise en compte de la part des revenus de YouTube et des impressions non payées ou désactivables. En règle générale, le RPM se situe entre 40 % et 68 % du CPM, c'est pourquoi une chaîne avec un CPM de 10 $ voit rarement un RPM correspondant à 10 $.</p>
+    <p>Dans le rapport ci-dessus, les revenus estimés sont générés en combinant la niche de contenu détectée par la chaîne, la langue et le pays de son audience principale, le rapport entre le contenu long et le contenu Short et les signaux d'engagement tels que les likes moyens, les commentaires et les niveaux de visionnage par vidéo. L'estimateur applique ensuite une bande de RPM de l'industrie pour chaque niche (par exemple, le contenu financier et d'investissement comporte généralement l'une des plages de RPM les plus élevées, tandis que les jeux et les divertissements comportent certaines des plages de RPM les plus basses) et la multiplie par le volume de visionnage mensuel de la chaîne.</p>
+
+    <h3>Pourquoi la géographie est plus importante que la plupart des créateurs ne le pensent</h3>
+    <p>Les annonceurs enchérissent le plus sur les audiences situées dans les régions à pouvoir d'achat élevé, de sorte que la localisation des spectateurs détermine le CPM plus que presque tout autre facteur. Les audiences aux États-Unis, au Royaume-Uni, au Canada, en Australie et dans les pays nordiques génèrent généralement les CPM les plus élevés – généralement entre 10 et 25 $ ou plus pour le contenu financier et commercial. Les audiences d'Europe occidentale (Allemagne, France, Pays-Bas, Espagne) se situent dans la moyenne, tandis que les téléspectateurs d'Asie du Sud, d'Asie du Sud-Est et de certaines régions d'Amérique latine produisent les CPM les plus bas, souvent inférieurs à 1 ou 2 dollars.</p>
+    <p>Ce qu’il faut retenir en pratique, c’est que deux chaînes avec un nombre de vues identique peuvent gagner des montants radicalement différents selon la provenance de leur trafic. Lorsque vous comparez les chaînes avec notre analyseur, faites attention au pays d'audience et à la langue détectés pour chacune d'entre elles. Une chaîne avec 500 000 vues en Inde et une chaîne avec 200 000 vues en provenance des États-Unis pourraient finir par gagner à peu près les mêmes revenus publicitaires. C'est également pourquoi cibler le public anglophone à travers des titres vidéo, des sous-titres et des sujets est l'un des changements structurels les plus efficaces qu'un créateur puisse apporter pour augmenter le RPM.</p>
+
+    <h3>Mid-rolls et durée de la vidéo : augmentez votre RPM sans nouveaux spectateurs</h3>
+    <p>La longueur de la vidéo affecte directement le nombre d'emplacements publicitaires qu'une vidéo peut contenir. Les vidéos de moins de 8 minutes ne peuvent afficher que des publicités pré-roll et post-roll, tandis que les vidéos de 8 minutes ou plus débloquent des coupures publicitaires mid-roll automatiquement placées. Étant donné que les publicités mid-roll sont souvent plus rentables par vue que les pré-rolls, passer de vidéos de 7 minutes à des vidéos de plus de 8 minutes est l'un des moyens les plus simples d'augmenter le RPM pour une audience existante.</p>
+    <p>Le placement mid-roll est également important. Un mid-roll inséré juste avant un changement brusque de scène, lors d'une transition naturelle ou après la résolution d'un « point d'histoire » a un taux d'achèvement beaucoup plus élevé qu'un mid-roll inséré au milieu d'une phrase. L'algorithme de YouTube place généralement les vidéos mid-roll aux points de dépôt des spectateurs, de sorte que les créateurs qui rythment leurs vidéos avec des sections logiques et des pauses naturelles fréquentes ont tendance à constater simultanément une meilleure complétion des annonces et une meilleure rétention. Pour les Shorts, le modèle de monétisation est différent et le RPM est généralement inférieur de 92 à 95 % à celui du format long. C'est pourquoi il est préférable de traiter les Shorts comme un moteur de découverte plutôt que comme une principale source de revenus.</p>
   </div>
 </section>
 
 <!-- ======================== HOW IT WORKS ======================== -->
-<section class="section" id="features" style="background:var(--bg-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+<section class="section section-alt-bordered" id="features">
   <div class="container">
     <div class="section-header reveal">
       <div class="section-divider"></div>
@@ -475,49 +546,8 @@
   </div>
 </section>
 
-<!-- ======================== NORCANTO PROMO ======================== -->
-<section class="section" style="background:var(--bg-2);border-top:1px solid var(--border);">
-  <div class="container">
-    <div class="promo-section norcanto reveal">
-      <div class="promo-content">
-        <div class="promo-badge">Norcanto IA</div>
-        <h2 class="promo-title" id="norcanto-promo-title">Besoin de travailler plus intelligemment avec vos documents ?</h2>
-        <p class="promo-text" id="norcanto-promo-text">Utilisez Norcanto AI pour analyser, résumer, traduire et exploiter vos documents avec l'intelligence artificielle. Approuvé par des milliers de professionnels.</p>
-        <a href="https://norcanto.com/" target="_blank" rel="noopener" class="btn btn-lg" style="background:#fff;color:#0A0A0B;font-weight:700;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          Découvrez Norcanto IA
-        </a>
-      </div>
-      <div class="promo-visual">
-        <div class="promo-icon-wrap">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6v6l4 2"/></svg>
-        </div>
-      </div>
-    </div>
-
-    <div style="margin-top:24px;">
-      <div class="promo-section quickdocs reveal">
-        <div class="promo-content">
-          <div class="promo-badge">Documents rapides</div>
-          <h2 class="promo-title" id="quickdocs-promo-title">Convertissez vos documents en quelques secondes</h2>
-          <p class="promo-text" id="quickdocs-promo-text">QuickDocs Converter vous permet de convertir rAPIdement des fichiers PDF, DOCX, PPTX, XLSX et bien plus encore. Utilisation rAPIde, sécurisée et gratuite.</p>
-          <a href="https://norcanto.com/" target="_blank" rel="noopener" class="btn btn-lg" style="background:rgba(33,150,243,0.9);color:#fff;font-weight:700;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
-            <span id="quickdocs-promo-btn">Utiliser le convertisseur QuickDocs</span>
-          </a>
-        </div>
-        <div class="promo-visual">
-          <div class="promo-icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ======================== FAQ ======================== -->
-<section class="section" id="faq" style="border-top:1px solid var(--border);">
+<section class="section section-top-border" id="faq">
   <div class="container">
     <div class="section-header reveal">
       <div class="section-divider"></div>
@@ -576,12 +606,12 @@
       </div>
     </div>
 
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Comment sont estimés les revenus de YouTube ?","acceptedAnswer":{"@type":"Answer","text":"Nous utilisons les données RPM en fonction de la niche détectée par la chaîne, de l'audience géographique, du type de contenu et des mesures d'engagement."}},{"@type":"Question","name":"Quelle est la précision des estimations de revenus ?","acceptedAnswer":{"@type":"Answer","text":"Nos estimations se situent dans une fourchette plausible basée sur les données réelles du RPM du marché. Les revenus réels varient en fonction de la demande des annonceurs, des tendances saisonnières et du taux de visionnage monétisé."}},{"@type":"Question","name":"Comment fonctionne le RPM ?","acceptedAnswer":{"@type":"Answer","text":"Le RPM est le montant qu'un créateur gagne pour 1 000 vues de vidéo. Cela varie selon la niche et la géographie."}},{"@type":"Question","name":"YouTube Shorts génère-t-il des revenus ?","acceptedAnswer":{"@type":"Answer","text":"Oui, mais nettement moins que les vidéos longues. Le régime des shorts est généralement inférieur de 92 à 95 %."}},{"@type":"Question","name":"Puis-je analyser n’importe quelle chaîne YouTube ?","acceptedAnswer":{"@type":"Answer","text":"Oui, n'importe quelle chaîne YouTube publique peut être analysée."}}],"inLanguage":"fr"}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Comment sont estimés les revenus de YouTube ?","acceptedAnswer":{"@type":"Answer","text":"Nous utilisons les données RPM en fonction de la niche détectée par la chaîne, de l'audience géographique, du type de contenu et des mesures d'engagement."}},{"@type":"Question","name":"Les statistiques sont-elles des données officielles de YouTube ?","acceptedAnswer":{"@type":"Answer","text":"Les statistiques des chaînes sont récupérées à partir de l'API YouTube Data v3. Les estimations de revenus sont des calculs exclusifs et ne sont pas fournies directement par YouTube."}},{"@type":"Question","name":"Quelle est la précision des estimations de revenus ?","acceptedAnswer":{"@type":"Answer","text":"Nos estimations se situent dans une fourchette plausible basée sur les données réelles du RPM du marché. Les revenus réels varient en fonction de la demande des annonceurs, des tendances saisonnières et du taux de visionnage monétisé."}},{"@type":"Question","name":"Comment fonctionne le RPM ?","acceptedAnswer":{"@type":"Answer","text":"Le RPM est le montant qu'un créateur gagne pour 1 000 vues de vidéo. Cela varie selon la niche et la géographie."}},{"@type":"Question","name":"Comment puis-je augmenter mes revenus YouTube ?","acceptedAnswer":{"@type":"Answer","text":"Concentrez-vous sur les niches à RPM plus élevé, ciblez un public anglophone, créez des vidéos plus longues pour plus de placements publicitaires, publiez de manière cohérente et diversifiez-vous avec des parrainages, des adhésions et du marketing d'affiliation."}},{"@type":"Question","name":"YouTube Shorts génère-t-il des revenus ?","acceptedAnswer":{"@type":"Answer","text":"Oui, mais nettement moins que les vidéos longues. Le régime des shorts est généralement inférieur de 92 à 95 %."}},{"@type":"Question","name":"Puis-je analyser n’importe quelle chaîne YouTube ?","acceptedAnswer":{"@type":"Answer","text":"Oui, n'importe quelle chaîne YouTube publique peut être analysée."}}],"inLanguage":"fr"}</script>
   </div>
 </section>
 
 <!-- ======================== BLOG PREVIEW ======================== -->
-<section class="section" style="background:var(--bg-2);border-top:1px solid var(--border);">
+<section class="section section-alt">
   <div class="container">
     <div class="section-header reveal">
       <div class="section-divider"></div>
@@ -598,7 +628,7 @@
         </div>
         <div class="blog-body">
           <div class="blog-cat">Revenus YouTube</div>
-          <div class="blog-title">Combien YouTube paie-t-il par vue en 2025 ?</div>
+          <div class="blog-title">Combien YouTube paie-t-il par vue en 2026 ?</div>
           <div class="blog-excerpt">Une ventilation complète des taux CPM et RPM de YouTube par pays, niche et type de contenu, avec des exemples réels de revenus des créateurs.</div>
           <div class="blog-meta">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -625,7 +655,7 @@
         </div>
       </a>
     </div>
-    <div style="text-align:center;margin-top:36px;">
+    <div class="promo-cta-center">
       <a href="/fr/blog" class="btn btn-secondary btn-lg">
         Voir tous les articles
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -657,8 +687,6 @@
       <div>
         <div class="footer-col-title">Norcanto</div>
         <div class="footer-links">
-          <a href="https://norcanto.com/" target="_blank" rel="noopener">Norcanto IA</a>
-          <a href="https://converter.norcanto.com" target="_blank" rel="noopener">Convertisseur QuickDocs</a>
           <a href="/fr/about">À propos</a>
         </div>
       </div>
@@ -684,7 +712,7 @@
 </footer>
 
 <!-- ======================== COOKIE BANNER ======================== -->
-<!-- HilltopAds Integration -->
+<!-- Google AdSense Integration -->
 <script src="/js/ads.js" defer></script><script src="/js/ad-manager.js" defer></script><script src="/js/app.js" defer></script>
 
 </body>

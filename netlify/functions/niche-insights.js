@@ -9,7 +9,11 @@ const { getCached, setCached } = require('./lib/cache');
 const ANALYTICS_TTL = 8 * 60 * 60 * 1000;
 const STALE_TTL = 48 * 60 * 60 * 1000;
 const MAX_QUERY_LENGTH = 100;
-const allowedRegions = new Set(['US','GB','CA','AU','FR','DE','ES','BR','IN','MX','JP','KR','NL','SE','NO']);
+const allowedRegions = new Set([
+  'US','GB','CA','AU','FR','DE','ES','BR','IN','MX','JP','KR','NL','SE','NO',
+  'AR','AT','BE','CH','CL','CO','CZ','EG','GR','HK','HU','ID','IE','IL','IT',
+  'MY','NZ','PE','PH','PL','PT','RO','SA','SG','TH','TR','UA','VN','ZA'
+]);
 const rateLimits = new Map();
 
 function json(statusCode, body, extraHeaders = {}) {

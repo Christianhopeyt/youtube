@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
   <!-- Start cookieyes banner -->
+  <script>if(location.hostname==='localhost'||location.hostname==='127.0.0.1'){var cy=document.currentScript;if(cy&&cy.nextElementSibling&&cy.nextElementSibling.id==='cookieyes')cy.nextElementSibling.remove();}</script>
   <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/bb75bdf1ed45084387a6477e5939d0a1/script.js"></script>
   <!-- End cookieyes banner -->
   <script type="text/plain" data-cookieyes="analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-5BCXGE5L5G"></script>
@@ -58,7 +59,7 @@
     .related-grid .card{text-decoration:none;padding:18px}
     .article-trust-note{max-width:760px;margin:40px auto 8px;padding:20px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--bg-2);color:var(--text-2);line-height:1.7}
   </style>
-    <link rel="canonical" href="https://norcanto.com/fr/creator-dashboard" />
+                  <link rel="canonical" href="https://norcanto.com/fr/creator-dashboard" />
   <link rel="alternate" hreflang="en" href="https://norcanto.com/creator-dashboard" />
   <link rel="alternate" hreflang="fr" href="https://norcanto.com/fr/creator-dashboard" />
   <link rel="alternate" hreflang="x-default" href="https://norcanto.com/creator-dashboard" />
@@ -69,7 +70,7 @@
 <body>
 <header id="header"><div class="container"><div class="header-inner">
   <a href="/fr" class="header-logo"><img src="/images/norlytics-logo.png" alt="Norlytics" class="site-logo-img" loading="eager" />Norlytics</a>
-  <nav class="header-nav"></nav>
+  <nav class="header-nav" aria-label="Navigation principale"><a href="/fr#analyzer" data-nav="analysis">Analyse des canaux</a><a href="/fr/creator-dashboard" data-nav="creator" class="active" aria-current="page">Tableau de bord du créateur</a><a href="/fr#calculator" data-nav="calculator">Calculatrice</a><a href="/fr/niche-insights" data-nav="niche">Perspectives de niche</a><a href="/fr/blog" data-nav="blog">Blog</a><a href="/fr/privacy" data-nav="privacy">Confidentialité</a><a href="/fr/about" data-nav="about">À propos</a></nav>
   <div class="header-controls"><div class="lang-switcher"><button class="lang-btn active" data-lang="EN">EN</button><button class="lang-btn" data-lang="FR">FR</button></div><button class="theme-toggle" aria-label="Changer de thème"></button></div>
   <button class="hamburger" aria-label="Ouvrir le menu" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
 </div></div></header>
@@ -93,13 +94,28 @@
         <div class="creator-dashboard-heading"><div><p class="creator-eyebrow" data-cd="eyebrow">Données publiques YouTube</p><h2 id="creator-dashboard-title" data-cd="title">Tableau de bord du créateur</h2><p data-cd="subtitle">Modèles de téléchargement récents, signaux de performances et idées de contenu basés sur les données des chaînes publiques.</p></div><span class="badge badge-gray" id="creator-confidence"></span></div>
         <div class="creator-source-notice" id="creator-source-notice" role="status" aria-live="polite"></div><div class="creator-loading" id="creator-loading" role="status"><div class="spinner"></div><span data-cd="loading">Création du tableau de bord du créateur à partir de vidéos publiques récentes...</span></div><div class="creator-error" id="creator-error" role="alert"></div>
         <div class="creator-content" id="creator-content" hidden><div class="creator-tabs" role="tablist" aria-label="Sections du tableau de bord du créateur"><button type="button" role="tab" aria-selected="true" aria-controls="creator-panel-overview" id="creator-tab-overview" data-tab="overview" data-cd="tab_overview">Aperçu</button><button type="button" role="tab" aria-selected="false" aria-controls="creator-panel-videos" id="creator-tab-videos" data-tab="videos" data-cd="tab_videos">Vidéos</button><button type="button" role="tab" aria-selected="false" aria-controls="creator-panel-ideas" id="creator-tab-ideas" data-tab="ideas" data-cd="tab_ideas">Idées</button></div>
-          <div class="creator-panel" id="creator-panel-overview" role="tabpanel" aria-labelledby="creator-tab-overview"><div class="creator-metric-grid" id="creator-metrics"></div><div class="creator-overview-grid"><article class="creator-card"><h3 data-cd="views_recent">Vues sur les mises en ligne récentes</h3><div class="creator-video-chart" id="creator-video-chart"></div></article><article class="creator-card"><h3 data-cd="upload_pattern">Modèle de téléchargement</h3><div id="creator-upload-pattern"></div></article></div><article class="creator-card"><h3 data-cd="growth_velocity">Vitesse de croissance</h3><div id="creator-growth"></div></article></div>
-          <div class="creator-panel" id="creator-panel-videos" role="tabpanel" aria-labelledby="creator-tab-videos" hidden><div class="creator-video-list" id="creator-top-videos"></div></div>
+          <div class="creator-panel" id="creator-panel-overview" role="tabpanel" aria-labelledby="creator-tab-overview"><div class="creator-actions"><button type="button" class="btn btn-secondary" id="creator-share-btn" data-cd="share_btn">Copier le résumé</button><button type="button" class="btn btn-secondary" id="creator-print-btn" data-cd="print_btn">Imprimer / Enregistrer le PDF</button></div><div class="creator-metric-grid" id="creator-metrics"></div><div class="creator-overview-grid"><article class="creator-card"><h3 data-cd="views_recent">Vues sur les mises en ligne récentes</h3><div class="creator-video-chart" id="creator-video-chart"></div></article><article class="creator-card"><h3 data-cd="upload_pattern">Modèle de téléchargement</h3><div id="creator-upload-pattern"></div></article></div><article class="creator-card"><h3 data-cd="growth_velocity">Vitesse de croissance</h3><div id="creator-growth"></div></article><article class="creator-card"><h3 data-cd="growth_chart">Tendance de croissance</h3><div class="creator-video-chart" id="creator-growth-chart"></div><p class="creator-note" data-cd="growth_note">Le nombre historique d'abonnés n'est pas public, la croissance est donc suivie avec les données de consultation publique.</p></article></div>
+          <div class="creator-panel" id="creator-panel-videos" role="tabpanel" aria-labelledby="creator-tab-videos" hidden><div class="creator-video-list" id="creator-top-videos"></div><div class="creator-compare-wrap" id="creator-compare-wrap"></div></div>
           <div class="creator-panel" id="creator-panel-ideas" role="tabpanel" aria-labelledby="creator-tab-ideas" hidden><div class="creator-ai-notice" data-cd="ai_notice">Les idées et les recommandations sont des interprétations générées par Gemini des mesures publiques ci-dessus.</div><div class="creator-ai-content" id="creator-ai-content"></div></div>
         </div>
       </section>
     </div>
-  </div></section><section class="section-sm creator-page-education" aria-labelledby="creator-education-title">
+  </div></section><section class="section-sm creator-page-education" aria-labelledby="creator-audit-title">
+    <div class="container">
+      <div class="article-body">
+        <div class="section-divider"></div>
+        <h2 id="creator-audit-title">Comment auditer une chaîne YouTube à l'aide de données publiques</h2>
+        <p>Effectuer un audit de canal approprié consiste à séparer les signaux de performance des mesures de vanité. Le nombre total d'abonnés est le numéro public le moins informatif sur n'importe quelle page de chaîne : il reflète l'historique cumulé, et non les performances actuelles. Le tableau de bord du créateur est délibérément en tête avec les vues médianes récentes, la cadence de téléchargement et la vitesse de croissance, car ce sont les chiffres qui prédisent ce qu'une chaîne fera ensuite.</p>
+        <h3>Commencez par des vues médianes, pas des moyennes</h3>
+        <p>Une seule vidéo en petits groupes peut gonfler une moyenne au point de la rendre inutile. Si la vidéo la plus populaire d'une chaîne a été vue 2 millions de fois, mais que ses 20 autres mises en ligne récentes se situent entre 8 000 et 15 000 vues, la moyenne suggérera une demande saine tandis que la médiane révélera une chaîne qui n'a pas encore atteint une portée reproductible. Comparez les vues médianes à la médiane de la période précédente : une médiane en hausse signifie que le canal s'aggrave ; une médiane plate ou en baisse avec des pointes occasionnelles signifie qu'elle dépend de valeurs aberrantes. Lorsque vous auditez un canal, notez toujours l’écart entre sa médiane et sa moyenne : un écart important est un signal d’alarme pour une demande fragile.</p>
+        <h3>Analyse de la vitesse : cadence, cohérence et pente</h3>
+        <p>La vitesse de croissance est la vitesse à laquelle une chaîne convertit les téléchargements en audience. Le tableau de bord divise cela en trois composants. Tout d’abord, la cadence de mise en ligne : la chaîne publie-t-elle chaque semaine, deux fois par mois ou de manière irrégulière ? La cadence irrégulière est le motif le plus courant sur les chaînes bloquées. Deuxièmement, la vitesse par vidéo : les mises en ligne récentes atteignent-elles le niveau de vue médian de la chaîne plus rapidement que les mises en ligne plus anciennes ? Troisièmement, le rapport nombre d'abonnés/vitesse : une chaîne qui gagne 5 000 abonnés pour 100 000 vues mensuelles s'accroît, tandis qu'une chaîne qui gagne 500 abonnés profite principalement du trafic de recherche sans créer d'audience. Ensemble, ces trois signaux vous indiquent si la croissance est fabriquée ou gagnée.</p>
+        <h3>Audit de saturation de la demande</h3>
+        <p>Une niche saturée est une niche dans laquelle les chaînes à succès obtiennent des vues élevées, mais où les nouveaux entrants, avec des efforts équivalents, restent coincés près de la médiane. Vous pouvez évaluer la saturation à partir des seules données publiques. Vérifiez si les principales chaînes de la niche publient un volume élevé de sujets presque identiques, si les vues médianes sur les 10 principales chaînes sont étroitement regroupées et si les taux d'engagement se compressent à mesure que la niche évolue. Un regroupement serré et un engagement compressé sont la signature d'un marché pleinement capturé : la demande existe, mais le public a déjà de solides favoris. En revanche, les niches émergentes affichent une large dispersion de vision et un engagement élevé, même parmi les chaînes de taille moyenne.</p>
+        <p>Utilisez ce cadre lors de l'examen du rapport : si les vues médianes sont stables ou en hausse, la cadence est cohérente et la vitesse dépasse la référence typique de la niche, le canal s'aggrave. Si l’un des trois manque, étudiez-le avant de prendre une décision en matière d’acquisition, de parrainage ou de contenu.</p>
+      </div>
+    </div>
+  </section><section class="section-sm creator-page-education" aria-labelledby="creator-education-title">
     <div class="container">
       <div class="article-body">
         <div class="section-divider"></div>
@@ -121,7 +137,7 @@
     </div>
   </section>
 </main>
-<footer id="footer"><div class="container"><div class="footer-bottom"><div class="footer-copy">© 2026 Norlytics. Propulsé par Norcanto.</div><div class="footer-legal"><a href="/fr/privacy">Confidentialité</a><a href="/fr/terms">Termes</a><a href="/fr/contact">Contact</a></div></div></div></footer><!-- HilltopAds Integration -->
+<footer id="footer"><div class="container"><div class="footer-top"><div class="footer-brand"><div class="footer-logo"><img src="/images/norlytics-logo.png" alt="Norlytics" class="site-logo-img" loading="lazy" decoding="async" /><div class="footer-logo-text">Norlytics</div></div><p class="footer-desc">Analyse gratuite des revenus de la chaîne YouTube et informations sur les performances. Propulsé par Norcanto.</p></div><div><div class="footer-col-title">Outils</div><div class="footer-links"><a href="/fr#analyzer">Analyseur de canaux</a><a href="/fr#calculator">Calculateur de revenus</a><a href="/fr/creator-dashboard">Tableau de bord du créateur</a><a href="/fr/niche-insights">Perspectives de niche</a><a href="/fr/blog">Blog</a></div></div><div><div class="footer-col-title">Norcanto</div><div class="footer-links"><a href="/fr/about">À propos</a></div></div><div><div class="footer-col-title">Légal</div><div class="footer-links"><a href="/fr/privacy">politique de confidentialité</a><a href="/fr/terms">Conditions d'utilisation</a><a href="/fr/contact">Contact</a><a href="/fr/cookies">Cookies</a></div></div></div><div class="footer-bottom"><div class="footer-copy">© 2026 Norlytics. Tous droits réservés.</div><div class="footer-legal"><a href="/fr/privacy">Confidentialité</a><a href="/fr/terms">Termes</a><a href="/fr/contact">Contact</a></div></div></div></footer><!-- Google AdSense Integration -->
 <script src="/js/ads.js" defer></script><script src="/js/ad-manager.js" defer></script><script src="/js/app.js" defer></script><script src="/js/creator-dashboard.js" defer></script><script src="/js/creator-dashboard-page.js" defer></script>
 </body>
 </html>

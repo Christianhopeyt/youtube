@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" role="img" aria-labelledby="t">
+  <title id="t">AI research board linking viewer questions to example videos and missing details</title>
+  <rect width="800" height="440" rx="20" fill="#0f1117"/>
+  <text x="400" y="44" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" fill="#ffffff">AI research board: turn questions into a recording plan</text>
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#e8eaed">
+    <rect x="40" y="72" width="176" height="38" rx="8" fill="#ff0000"/>
+    <text x="128" y="97" text-anchor="middle" font-weight="700" fill="#ffffff">Viewer question</text>
+    <rect x="232" y="72" width="176" height="38" rx="8" fill="#ff0000"/>
+    <text x="320" y="97" text-anchor="middle" font-weight="700" fill="#ffffff">Public example video</text>
+    <rect x="424" y="72" width="176" height="38" rx="8" fill="#ff0000"/>
+    <text x="512" y="97" text-anchor="middle" font-weight="700" fill="#ffffff">Missing detail</text>
+    <rect x="616" y="72" width="152" height="38" rx="8" fill="#ff0000"/>
+    <text x="692" y="97" text-anchor="middle" font-weight="700" fill="#ffffff">Internal link</text>
+
+    <rect x="40" y="124" width="176" height="56" rx="8" fill="#1d2128"/>
+    <text x="128" y="148" text-anchor="middle">Budget mic for</text>
+    <text x="128" y="168" text-anchor="middle">a small apartment</text>
+    <rect x="232" y="124" width="176" height="56" rx="8" fill="#1d2128"/>
+    <text x="320" y="148" text-anchor="middle">Tech reviewer setup</text>
+    <text x="320" y="168" text-anchor="middle">walkthrough</text>
+    <rect x="424" y="124" width="176" height="56" rx="8" fill="#1d2128"/>
+    <text x="512" y="148" text-anchor="middle">Reverb in small rooms</text>
+    <text x="512" y="168" text-anchor="middle">goes untested</text>
+    <rect x="616" y="124" width="152" height="56" rx="8" fill="#1d2128"/>
+    <text x="692" y="148" text-anchor="middle">/creator-dashboard</text>
+    <text x="692" y="168" text-anchor="middle">comparison view</text>
+
+    <rect x="40" y="194" width="176" height="56" rx="8" fill="#1d2128"/>
+    <text x="128" y="218" text-anchor="middle">Recurring mistakes</text>
+    <text x="128" y="238" text-anchor="middle">beginners ask about</text>
+    <rect x="232" y="194" width="176" height="56" rx="8" fill="#1d2128"/>
+    <text x="320" y="218" text-anchor="middle">Editing channel</text>
+    <text x="320" y="238" text-anchor="middle">comparison episode</text>
+    <rect x="424" y="194" width="176" height="56" rx="8" fill="#1d2128"/>
+    <text x="512" y="218" text-anchor="middle">Audio-only advice,</text>
+    <text x="512" y="238" text-anchor="middle">no examples</text>
+    <rect x="616" y="194" width="152" height="56" rx="8" fill="#1d2128"/>
+    <text x="692" y="218" text-anchor="middle">/niche-insights</text>
+    <text x="692" y="238" text-anchor="middle">topic demand</text>
+
+    <rect x="40" y="264" width="176" height="56" rx="8" fill="#1d2128"/>
+    <text x="128" y="288" text-anchor="middle">Which mic fits a</text>
+    <text x="128" y="308" text-anchor="middle">solo budget creator</text>
+    <rect x="232" y="264" width="176" height="56" rx="8" fill="#1d2128"/>
+    <text x="320" y="288" text-anchor="middle">Roundup with real</text>
+    <text x="320" y="308" text-anchor="middle">audio samples</text>
+    <rect x="424" y="264" width="176" height="56" rx="8" fill="#1d2128"/>
+    <text x="512" y="288" text-anchor="middle">No sample audio in</text>
+    <text x="512" y="308" text-anchor="middle">the same room</text>
+    <rect x="616" y="264" width="152" height="56" rx="8" fill="#1d2128"/>
+    <text x="692" y="288" text-anchor="middle">/blog/compare-</text>
+    <text x="692" y="308" text-anchor="middle">youtube-channels</text>
+  </g>
+  <rect x="180" y="356" width="440" height="54" rx="27" fill="#1d2128" stroke="#ff0000" stroke-width="2"/>
+  <text x="400" y="380" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#ff6b6b">Each row becomes a research task</text>
+  <text x="400" y="400" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#9aa0a6">Fill in proof and examples before recording, never in the script</text>
+</svg>

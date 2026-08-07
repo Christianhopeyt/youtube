@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" role="img" aria-labelledby="t">
+  <title id="t">Sponsorship scorecard with rows for audience, integration, and rights</title>
+  <rect width="800" height="440" rx="20" fill="#0f1117"/>
+  <text x="400" y="44" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" fill="#ffffff">Sponsorship scorecard</text>
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#e8eaed">
+    <rect x="40" y="76" width="250" height="40" rx="8" fill="#ff0000"/>
+    <text x="165" y="103" text-anchor="middle" font-weight="700" fill="#ffffff">Signal</text>
+    <rect x="306" y="76" width="230" height="40" rx="8" fill="#ff0000"/>
+    <text x="421" y="103" text-anchor="middle" font-weight="700" fill="#ffffff">Public check</text>
+    <rect x="552" y="76" width="208" height="40" rx="8" fill="#ff0000"/>
+    <text x="656" y="103" text-anchor="middle" font-weight="700" fill="#ffffff">Score (1-5)</text>
+
+    <rect x="40" y="128" width="250" height="44" rx="8" fill="#1d2128"/>
+    <text x="165" y="156" text-anchor="middle">Median recent views</text>
+    <rect x="306" y="128" width="230" height="44" rx="8" fill="#1d2128"/>
+    <text x="421" y="156" text-anchor="middle">Last 10-20 uploads</text>
+    <rect x="552" y="128" width="208" height="44" rx="8" fill="#2a1113"/>
+    <text x="656" y="156" text-anchor="middle" font-weight="700" fill="#ff6b6b">4</text>
+
+    <rect x="40" y="184" width="250" height="44" rx="8" fill="#1d2128"/>
+    <text x="165" y="212" text-anchor="middle">Audience fit</text>
+    <rect x="306" y="184" width="230" height="44" rx="8" fill="#1d2128"/>
+    <text x="421" y="212" text-anchor="middle">Topic, comments, intent</text>
+    <rect x="552" y="184" width="208" height="44" rx="8" fill="#2a1113"/>
+    <text x="656" y="212" text-anchor="middle" font-weight="700" fill="#ff6b6b">5</text>
+
+    <rect x="40" y="240" width="250" height="44" rx="8" fill="#1d2128"/>
+    <text x="165" y="268" text-anchor="middle">Integration risk</text>
+    <rect x="306" y="240" width="230" height="44" rx="8" fill="#1d2128"/>
+    <text x="421" y="268" text-anchor="middle">Claims you can test</text>
+    <rect x="552" y="240" width="208" height="44" rx="8" fill="#2a1113"/>
+    <text x="656" y="268" text-anchor="middle" font-weight="700" fill="#ff6b6b">3</text>
+
+    <rect x="40" y="296" width="250" height="44" rx="8" fill="#1d2128"/>
+    <text x="165" y="324" text-anchor="middle">Usage rights</text>
+    <rect x="306" y="296" width="230" height="44" rx="8" fill="#1d2128"/>
+    <text x="421" y="324" text-anchor="middle">Clips, ads, whitelisting</text>
+    <rect x="552" y="296" width="208" height="44" rx="8" fill="#2a1113"/>
+    <text x="656" y="324" text-anchor="middle" font-weight="700" fill="#ff6b6b">2</text>
+
+    <rect x="40" y="352" width="250" height="44" rx="8" fill="#1d2128"/>
+    <text x="165" y="380" text-anchor="middle">Deliverables</text>
+    <rect x="306" y="352" width="230" height="44" rx="8" fill="#1d2128"/>
+    <text x="421" y="380" text-anchor="middle">Length, revisions, links</text>
+    <rect x="552" y="352" width="208" height="44" rx="8" fill="#2a1113"/>
+    <text x="656" y="380" text-anchor="middle" font-weight="700" fill="#ff6b6b">4</text>
+  </g>
+</svg>

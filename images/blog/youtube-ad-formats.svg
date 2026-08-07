@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" role="img" aria-labelledby="t">
+  <title id="t">The main YouTube ad formats creators earn from in 2026</title>
+  <rect width="800" height="440" rx="20" fill="#0f1117"/>
+  <text x="400" y="46" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" fill="#ffffff">YouTube ad formats in 2026</text>
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#e8eaed">
+    <rect x="40" y="80" width="226" height="130" rx="12" fill="#1d2128" stroke="#ff0000" stroke-width="2"/>
+    <text x="56" y="108" font-weight="700" fill="#ff6b6b">Skippable in-stream</text>
+    <text x="56" y="132">TrueView ads. Viewers can</text>
+    <text x="56" y="150">skip after 5 seconds.</text>
+    <text x="56" y="168">Most common format for</text>
+    <text x="56" y="186">long-form creators.</text>
+
+    <rect x="287" y="80" width="226" height="130" rx="12" fill="#1d2128" stroke="#ff0000" stroke-width="2"/>
+    <text x="303" y="108" font-weight="700" fill="#ff6b6b">Non-skippable</text>
+    <text x="303" y="132">Up to 15 seconds, before,</text>
+    <text x="303" y="150">during, or after a video.</text>
+    <text x="303" y="168">Often used with the 6-second</text>
+    <text x="303" y="186">in-stream variant.</text>
+
+    <rect x="534" y="80" width="226" height="130" rx="12" fill="#1d2128" stroke="#ff0000" stroke-width="2"/>
+    <text x="550" y="108" font-weight="700" fill="#ff6b6b">Bumper</text>
+    <text x="550" y="132">Six seconds, non-skippable,</text>
+    <text x="550" y="150">built for reach and recall.</text>
+    <text x="550" y="168">Short by design, so it only</text>
+    <text x="550" y="186">works with tight messaging.</text>
+
+    <rect x="40" y="230" width="226" height="130" rx="12" fill="#1d2128" stroke="#ff0000" stroke-width="2"/>
+    <text x="56" y="258" font-weight="700" fill="#ff6b6b">In-feed</text>
+    <text x="56" y="282">Video ads that appear in</text>
+    <text x="56" y="300">search results, the home</text>
+    <text x="56" y="318">feed, and "next up" panels.</text>
+
+    <rect x="287" y="230" width="226" height="130" rx="12" fill="#1d2128" stroke="#ff0000" stroke-width="2"/>
+    <text x="303" y="258" font-weight="700" fill="#ff6b6b">Shorts ads</text>
+    <text x="303" y="282">Swipeable, vertical ads shown</text>
+    <text x="303" y="300">between Shorts. Revenue is</text>
+    <text x="303" y="318">pooled, then split with creators.</text>
+
+    <rect x="534" y="230" width="226" height="130" rx="12" fill="#1d2128" stroke="#ff0000" stroke-width="2"/>
+    <text x="550" y="258" font-weight="700" fill="#ff6b6b">Masthead</text>
+    <text x="550" y="282">Premium homepage placement.</text>
+    <text x="550" y="300">Reserved via Google Ads, so</text>
+    <text x="550" y="318">creators rarely see it directly.</text>
+  </g>
+  <rect x="120" y="382" width="560" height="44" rx="22" fill="#1d2128" stroke="#ff0000" stroke-width="1.5"/>
+  <text x="400" y="410" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#e8eaed">Creator split: 55% of long-form ad revenue · Shorts share from a pooled fund</text>
+</svg>

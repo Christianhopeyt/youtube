@@ -24,7 +24,9 @@ const NI_STRINGS = {
     limit_sample:'The report analyzes a sample of up to 50 recent relevant public videos, not every video in the niche.',
     limit_directional:'Scores are directional indicators based on sampled public data and do not guarantee performance.',
     limit_frequency:'Upload frequency means observed relevant uploads in the sample.',
-    limit_unavailable:'Likes, comments, and tags may be unavailable for some videos.'
+    limit_unavailable:'Likes, comments, and tags may be unavailable for some videos.',
+    window_label:'Analysis window', recent_title:'Recent searches', recent_clear:'Clear',
+    share_btn:'Copy report', share_copied:'Report copied to clipboard.', share_failed:'Copy failed. Select the text and copy manually.'
   },
   FR: {
     guide_title:'Comment Utiliser Niche Insights', guide_intro:'D\u00e9couvrez les niches YouTube tendance et les opportunit\u00e9s de contenu en quelques minutes.',
@@ -50,13 +52,17 @@ const NI_STRINGS = {
     limit_sample:'Le rapport analyse un échantillon de 50 vidéos publiques récentes et pertinentes au maximum, et non toutes les vidéos de la niche.',
     limit_directional:'Les scores sont des indicateurs directionnels basés sur les données publiques échantillonnées et ne garantissent aucun résultat.',
     limit_frequency:'La fréquence de publication correspond aux publications pertinentes observées dans l’échantillon.',
-    limit_unavailable:'Les likes, commentaires et tags peuvent être indisponibles pour certaines vidéos.'
+    limit_unavailable:'Les likes, commentaires et tags peuvent être indisponibles pour certaines vidéos.',
+    window_label:'Période d’analyse', recent_title:'Recherches récentes', recent_clear:'Effacer',
+    share_btn:'Copier le rapport', share_copied:'Rapport copié dans le presse-papiers.', share_failed:'Échec de la copie. Sélectionnez le texte et copiez-le manuellement.'
   }
 };
 
 const NicheInsights = {
   lang: 'EN',
   data: null,
+  analytics: null,
+  windowKey: '90',
   init() {
     this.form = document.getElementById('niche-form');
     if (!this.form) return;
@@ -64,8 +70,17 @@ const NicheInsights = {
     this.applyLanguage();
     this.form.addEventListener('submit', event => { event.preventDefault(); this.run(); });
     document.querySelectorAll('.lang-btn').forEach(button => button.addEventListener('click', () => {
-      setTimeout(() => { this.lang = button.dataset.lang; this.applyLanguage(); if (this.data) this.render(this.data); }, 0);
+      setTimeout(() => { this.lang = button.dataset.lang; this.applyLanguage(); this.renderRecent(); if (this.data) this.render(this.data); }, 0);
     }));
+    const select = document.getElementById('niche-window-select');
+    if (select) select.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+      this.windowKey = button.dataset.window;
+      select.querySelectorAll('button').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+      if (this.analytics) this.renderMetrics(this.analytics);
+    }));
+    const share = document.getElementById('niche-share-btn');
+    if (share) share.addEventListener('click', () => this.shareReport());
+    this.renderRecent();
   },
   text(key) { return NI_STRINGS[this.lang]?.[key] || NI_STRINGS.EN[key] || ''; },
   applyLanguage() {
@@ -88,6 +103,8 @@ const NicheInsights = {
   async run() {
     const query = document.getElementById('niche-query').value.trim();
     if (query.length < 2) { this.setStatus(this.text('invalid'), true); document.getElementById('niche-query').focus(); return; }
+    const region = document.getElementById('niche-region').value;
+    const language = document.getElementById('niche-language').value;
     const button = document.getElementById('niche-submit');
     button.disabled = true;
     this.setStatus(this.text('loading'), false, true);
@@ -97,8 +114,8 @@ const NicheInsights = {
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({
           query,
-          region: document.getElementById('niche-region').value,
-          language: document.getElementById('niche-language').value,
+          region,
+          language,
           includeAiSuggestions: true
         })
       });
@@ -110,6 +127,8 @@ const NicheInsights = {
         throw new Error(this.text(errorKey));
       }
       this.data = data;
+      this.analytics = data.analytics;
+      this.saveRecent({ query, region, language });
       this.render(data);
       this.setStatus('');
     } catch (error) {
@@ -148,6 +167,8 @@ const NicheInsights = {
       this.scoreCard('competition', this.text('competition'), analytics.scores.competition),
       this.scoreCard('opportunity', this.text('opportunity'), analytics.scores.opportunity)
     ].join('');
+    const select = document.getElementById('niche-window-select');
+    if (select) select.hidden = false;
     this.renderMetrics(analytics);
     this.renderWindows(analytics.windows);
     this.renderKeywords(analytics.commonKeywords);
@@ -164,7 +185,7 @@ const NicheInsights = {
     document.getElementById('source-notices').innerHTML = notices.join('');
   },
   renderMetrics(analytics) {
-    const w = analytics.windows['90'];
+    const w = analytics.windows[this.windowKey] || analytics.windows['90'];
     const items = [
       [this.text('avg_views'), this.number(w.averageViews)],
       [this.text('avg_likes'), this.number(w.averageLikes)],
@@ -202,6 +223,75 @@ const NicheInsights = {
     if (!ai) { container.innerHTML = `<div class="niche-empty">${this.escape(error || this.text('ai_unavailable'))}</div>`; return; }
     const list = (title, items) => `<div class="ai-group"><h4>${this.escape(title)}</h4><div class="idea-list">${items.map(item => `<div class="idea-item">${this.escape(item)}</div>`).join('')}</div></div>`;
     container.innerHTML = `<h4>${this.escape(this.text('summary'))}</h4><p class="ai-summary">${this.escape(ai.summary)}</p>${list(this.text('titles'),ai.titleIdeas)}${list(this.text('tags'),ai.tagSuggestions)}${list(this.text('angles'),ai.videoAngles)}`;
+  },
+  saveRecent({ query, region, language }) {
+    try {
+      const current = JSON.parse(localStorage.getItem('ni-recent') || '[]');
+      const next = [{ query, region, language }, ...current.filter(item => !(item.query === query && item.region === region && item.language === language))].slice(0, 5);
+      localStorage.setItem('ni-recent', JSON.stringify(next));
+      this.renderRecent();
+    } catch (_) {}
+  },
+  renderRecent() {
+    const container = document.getElementById('niche-recent');
+    if (!container) return;
+    let items = [];
+    try { items = JSON.parse(localStorage.getItem('ni-recent') || '[]'); } catch (_) {}
+    if (!items.length) { container.hidden = true; return; }
+    container.hidden = false;
+    container.innerHTML = `<span class="niche-recent-title">${this.escape(this.text('recent_title'))}</span>${items.map(item => `<button type="button" class="niche-recent-chip" data-q="${this.escape(item.query)}" data-r="${this.escape(item.region)}" data-l="${this.escape(item.language)}">${this.escape(item.query)}</button>`).join('')}<button type="button" class="niche-recent-clear" id="niche-recent-clear">${this.escape(this.text('recent_clear'))}</button>`;
+    container.querySelectorAll('.niche-recent-chip').forEach(chip => chip.addEventListener('click', () => {
+      document.getElementById('niche-query').value = chip.dataset.q;
+      document.getElementById('niche-region').value = chip.dataset.r;
+      document.getElementById('niche-language').value = chip.dataset.l;
+      this.run();
+    }));
+    const clear = document.getElementById('niche-recent-clear');
+    if (clear) clear.addEventListener('click', () => {
+      try { localStorage.removeItem('ni-recent'); } catch (_) {}
+      this.renderRecent();
+    });
+  },
+  reportText() {
+    const data = this.data;
+    if (!data) return '';
+    const analytics = data.analytics;
+    const w = analytics.windows['90'];
+    const scores = analytics.scores;
+    const top = analytics.fastPerformers[0];
+    const lines = [
+      `Norlytics Niche Insights: ${data.query}`,
+      `${this.text('region')}: ${data.region} | ${this.text('result_language')}: ${data.language}`,
+      `${this.text('sampled')}: ${analytics.sampleSize} | ${this.text('updated')}: ${new Date(data.sampledAt).toLocaleString(this.lang === 'FR' ? 'fr-FR' : 'en-US')}`,
+      `${this.text('trend')}: ${scores.trend} | ${this.text('competition')}: ${scores.competition} | ${this.text('opportunity')}: ${scores.opportunity}`,
+      `${this.text('avg_views')}: ${this.number(w.averageViews)} | ${this.text('engagement')}: ${this.percent(w.averageEngagementRate)} | ${this.text('uploads')}: ${this.number(w.uploadsPerWeek, 1)}`,
+      analytics.commonKeywords.length ? `${this.text('keywords')}: ${analytics.commonKeywords.slice(0, 6).map(item => item.keyword).join(', ')}` : '',
+      top ? `${this.text('fast_count')}: ${top.title} (${this.number(top.viewsPerDay)} ${this.text('views_per_day')})` : '',
+      'https://norcanto.com/niche-insights'
+    ].filter(Boolean);
+    return lines.join('\n');
+  },
+  shareReport() {
+    const button = document.getElementById('niche-share-btn');
+    if (!button || !this.data) return;
+    const restore = () => { button.textContent = this.text('share_btn'); button.disabled = false; };
+    const feedback = ok => { button.textContent = this.text(ok ? 'share_copied' : 'share_failed'); setTimeout(restore, 2200); };
+    const text = this.reportText();
+    button.disabled = true;
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(() => feedback(true)).catch(() => feedback(false));
+    } else {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      let ok = false;
+      try { ok = document.execCommand('copy'); } catch (_) {}
+      document.body.removeChild(textarea);
+      feedback(ok);
+    }
   }
 };
 

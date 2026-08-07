@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" role="img" aria-labelledby="t">
+  <title id="t">Three title and thumbnail concepts with notes for promise, audience, and proof</title>
+  <rect width="800" height="440" rx="20" fill="#0f1117"/>
+  <text x="400" y="44" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" fill="#ffffff">Test three packages before recording</text>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <rect x="40" y="74" width="224" height="130" rx="12" fill="#40161a" stroke="#ff0000" stroke-width="2"/>
+    <text x="152" y="110" text-anchor="middle" font-size="16" font-weight="700" fill="#ff6b6b">Concept A</text>
+    <text x="152" y="140" text-anchor="middle" font-size="14" fill="#e8eaed">"10 AI tools that</text>
+    <text x="152" y="160" text-anchor="middle" font-size="14" fill="#e8eaed">save 5 hours a week"</text>
+    <text x="152" y="188" text-anchor="middle" font-size="12" fill="#9aa0a6">Promise: time saved</text>
+    <rect x="40" y="212" width="224" height="150" rx="12" fill="#1d2128"/>
+    <text x="152" y="236" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">Notes</text>
+    <text x="152" y="258" text-anchor="middle" font-size="12" fill="#9aa0a6">Audience: busy creators</text>
+    <text x="152" y="278" text-anchor="middle" font-size="12" fill="#9aa0a6">Proof needed: measured</text>
+    <text x="152" y="298" text-anchor="middle" font-size="12" fill="#9aa0a6">times per tool</text>
+    <text x="152" y="318" text-anchor="middle" font-size="12" fill="#9aa0a6">Risk: "10 tools" = thin</text>
+
+    <rect x="288" y="74" width="224" height="130" rx="12" fill="#2a1113" stroke="#ff0000" stroke-width="2"/>
+    <text x="400" y="110" text-anchor="middle" font-size="16" font-weight="700" fill="#ff6b6b">Concept B</text>
+    <text x="400" y="140" text-anchor="middle" font-size="14" fill="#e8eaed">"I switched to one</text>
+    <text x="400" y="160" text-anchor="middle" font-size="14" fill="#e8eaed">AI editor for 90 days"</text>
+    <text x="400" y="188" text-anchor="middle" font-size="12" fill="#9aa0a6">Promise: real experience</text>
+    <rect x="288" y="212" width="224" height="150" rx="12" fill="#1d2128"/>
+    <text x="400" y="236" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">Notes</text>
+    <text x="400" y="258" text-anchor="middle" font-size="12" fill="#9aa0a6">Audience: skeptics of</text>
+    <text x="400" y="278" text-anchor="middle" font-size="12" fill="#9aa0a6">shiny AI promises</text>
+    <text x="400" y="298" text-anchor="middle" font-size="12" fill="#9aa0a6">Proof: workflow before</text>
+    <text x="400" y="318" text-anchor="middle" font-size="12" fill="#9aa0a6">and after, with numbers</text>
+
+    <rect x="536" y="74" width="224" height="130" rx="12" fill="#2a1113" stroke="#ff0000" stroke-width="2"/>
+    <text x="648" y="110" text-anchor="middle" font-size="16" font-weight="700" fill="#ff6b6b">Concept C</text>
+    <text x="648" y="140" text-anchor="middle" font-size="14" fill="#e8eaed">"Why your AI scripts</text>
+    <text x="648" y="160" text-anchor="middle" font-size="14" fill="#e8eaed">sound like everyone's"</text>
+    <text x="648" y="188" text-anchor="middle" font-size="12" fill="#9aa0a6">Promise: fix a real pain</text>
+    <rect x="536" y="212" width="224" height="150" rx="12" fill="#1d2128"/>
+    <text x="648" y="236" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">Notes</text>
+    <text x="648" y="258" text-anchor="middle" font-size="12" fill="#9aa0a6">Audience: creators</text>
+    <text x="648" y="278" text-anchor="middle" font-size="12" fill="#9aa0a6">already using AI</text>
+    <text x="648" y="298" text-anchor="middle" font-size="12" fill="#9aa0a6">Proof: before/after</text>
+    <text x="648" y="318" text-anchor="middle" font-size="12" fill="#9aa0a6">script examples</text>
+  </g>
+  <text x="400" y="404" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#9aa0a6">Pick the concept whose promise you can prove with footage you already have</text>
+</svg>

@@ -44,10 +44,6 @@ A premium SaaS web application for analyzing YouTube channel revenue, performanc
 ├── terms/index.html
 ├── contact/index.html
 ├── cookies-notice/index.html
-├── api/
-│   ├── server.js           # Node.js API proxy (keeps API key server-side)
-│   ├── package.json
-│   └── README.md
 ├── sitemap.xml
 ├── robots.txt
 ├── netlify.toml
@@ -108,7 +104,7 @@ Country multipliers (US: 1.5x, UK/CA: 1.3x, IN: 0.3x, etc.)
 - Update `RPM_DATA` in `js/app.js` to adjust niche/country RPM values
 - Modify the color palette via CSS variables in `css/main.css`
 - Add AdSense publisher ID in `index.html` (slots are pre-configured)
-- Add your domain to `ALLOWED_ORIGIN` in `api/.env`
+- Set `YT_API_KEY`, `GEMINI_API_KEY`, and `GEMINI_MODEL` in the Netlify environment
 
 ## License
 

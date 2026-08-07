@@ -1,7 +1,8 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- Start cookieyes banner -->
+  <script>if(location.hostname==='localhost'||location.hostname==='127.0.0.1'){var cy=document.currentScript;if(cy&&cy.nextElementSibling&&cy.nextElementSibling.id==='cookieyes')cy.nextElementSibling.remove();}</script>
   <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/bb75bdf1ed45084387a6477e5939d0a1/script.js"></script>
   <!-- End cookieyes banner -->
   <script type="text/plain" data-cookieyes="analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-5BCXGE5L5G"></script>
@@ -96,7 +97,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#ff0000" />
-  <link rel="canonical" href="https://norcanto.com/" />
+                <link rel="canonical" href="https://norcanto.com/" />
   <link rel="alternate" hreflang="en" href="https://norcanto.com/" />
   <link rel="alternate" hreflang="fr" href="https://norcanto.com/fr" />
   <link rel="alternate" hreflang="x-default" href="https://norcanto.com/" />
@@ -115,12 +116,14 @@
         Norlytics
       </a>
 
-      <nav class="header-nav">
-        <a href="#analyzer" class="active">Channel Analysis</a>
-        <a href="#calculator">Calculator</a>
-        <a href="/blog">Blog</a><a href="/blog/ai-tools-for-youtube-creators">AI Tools for YouTube Creators</a><a href="/blog/grow-youtube-channel-fast">How to Grow a YouTube Channel Faster Without Chasing Hacks</a><a href="/blog/youtube-cpm-countries">YouTube CPM by Country</a><a href="/blog/youtube-rpm-by-niche">YouTube RPM by Niche</a><a href="/blog/youtube-shorts-monetization">YouTube Shorts Monetization</a><a href="/blog/youtube-sponsorship-guide">YouTube Sponsorship Guide</a><a href="/blog/youtube-rpm-vs-cpm">RPM vs CPM</a><a href="/blog/youtube-channel-audit-checklist">Channel Audit Checklist</a><a href="/blog/youtube-niche-validation-framework">Niche Validation</a>
-        <a href="/privacy">Privacy</a>
-        <a href="/about">About</a>
+      <nav class="header-nav" aria-label="Primary navigation">
+        <a href="/#analyzer" data-nav="analysis">Channel Analysis</a>
+        <a href="/creator-dashboard" data-nav="creator">Creator Dashboard</a>
+        <a href="/#calculator" data-nav="calculator">Calculator</a>
+        <a href="/niche-insights" data-nav="niche">Niche Insights</a>
+        <a href="/blog" data-nav="blog">Blog</a>
+        <a href="/privacy" data-nav="privacy">Privacy</a>
+        <a href="/about" data-nav="about">About</a>
       </nav>
 
       <div class="header-controls">
@@ -199,7 +202,7 @@
 </section>
 
 <!-- ======================== ANALYZER ======================== -->
-<section id="analyzer" style="padding:0 0 80px;">
+<section id="analyzer" class="analyzer-section">
   <div class="container">
     <div class="analyzer-card reveal">
       <div class="analyzer-label" id="analyzer-label">YouTube Channel Analysis</div>
@@ -286,11 +289,34 @@
       </div>
       <div class="stat-card">
         <div class="stat-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </div>
+        <div class="stat-card-value" id="res-engagement">—</div>
+        <div class="stat-card-label" id="stat-label-engagement">Engagement Rate</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         </div>
         <div class="stat-card-value" id="res-created">—</div>
         <div class="stat-card-label" id="stat-label-created">Channel Created</div>
       </div>
+    </div>
+
+    <!-- Report actions -->
+    <div class="results-actions" id="results-actions">
+      <button type="button" class="btn btn-secondary" id="res-share-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        <span id="res-share-btn-text">Share Report</span>
+      </button>
+      <button type="button" class="btn btn-secondary" id="res-print-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        <span id="res-print-btn-text">Export PDF</span>
+      </button>
+      <button type="button" class="btn btn-secondary" id="res-compare-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+        <span id="res-compare-btn-text">Compare</span>
+      </button>
     </div>
 
     <aside class="creator-dashboard-cta">
@@ -300,7 +326,7 @@
 
     <!-- Revenue Cards -->
     <div class="revenue-section reveal reveal-delay-1">
-      <h3 style="margin-bottom:20px; font-family:var(--font-display);">Estimated Revenue</h3>
+      <h3 class="revenue-title">Estimated Revenue</h3>
       <div class="revenue-grid">
         <div class="revenue-card">
           <div class="revenue-card-period">
@@ -347,9 +373,9 @@
         <div class="chart-title">Monthly Revenue Projection</div>
         <div class="revenue-chart" id="revenue-chart"></div>
         <div class="chart-legend">
-          <div class="legend-item"><div class="legend-dot" style="background:var(--gray-300)"></div>Minimum</div>
-          <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div>Average</div>
-          <div class="legend-item"><div class="legend-dot" style="background:var(--yt-red)"></div>Maximum</div>
+          <div class="legend-item"><div class="legend-dot min"></div>Minimum</div>
+          <div class="legend-item"><div class="legend-dot avg"></div>Average</div>
+          <div class="legend-item"><div class="legend-dot max"></div>Maximum</div>
         </div>
       </div>
     </div>
@@ -359,7 +385,7 @@
       <div class="score-header">
         <div>
           <div class="score-title" id="res-score-title">Business Potential Score</div>
-          <div style="font-size:0.82rem;color:var(--text-3);margin-top:4px;" id="res-score-subtitle">Composite monetization potential</div>
+          <div class="score-subtitle" id="res-score-subtitle">Composite monetization potential</div>
         </div>
         <div class="score-display">
           <div>
@@ -395,11 +421,56 @@
         </div>
       </div>
     </div>
+
+    <!-- Top Videos -->
+    <div class="top-videos-section reveal" id="top-videos-section" hidden>
+      <h3 class="revenue-title" id="top-videos-title">Top Videos</h3>
+      <p class="section-note" id="top-videos-note">Ranked by average daily views across recent uploads.</p>
+      <div class="top-videos-list" id="res-top-videos-list"></div>
+    </div>
+
+    <!-- Compare -->
+    <div class="compare-section reveal" id="compare-section" hidden>
+      <div class="compare-head">
+        <div>
+          <h3 class="revenue-title" id="compare-title">Compare With Another Channel</h3>
+          <p class="section-note" id="compare-hint">Paste a second channel URL to compare side by side.</p>
+        </div>
+      </div>
+      <div class="compare-input-row">
+        <input type="text" id="compare-input" class="analyzer-input" placeholder="Paste a second channel URL..." autocomplete="off" spellcheck="false" />
+        <button type="button" id="compare-go" class="analyze-btn"><span id="compare-go-text">Compare</span></button>
+      </div>
+      <div class="compare-result" id="compare-result" hidden></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== EDUCATION: RPM & REVENUE GUIDE ======================== -->
+<section class="section section-top-border" id="revenue-guide">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-divider"></div>
+      <h2 id="guide-title">Understanding RPM, CPM, and YouTube Ad Revenue</h2>
+      <p id="guide-subtitle">What the numbers in your report mean — and how to improve them</p>
+    </div>
+
+    <h3>What is RPM and how is it calculated?</h3>
+    <p>RPM (Revenue Per Mille) is the amount a creator earns for every 1,000 monetized video views. The YouTube Partner Program calculates it by dividing total estimated earnings from a reporting period by total playbacks, then multiplying by 1,000. RPM is not the same as CPM: CPM is the price an advertiser pays for 1,000 ad impressions, while RPM is the net amount the creator keeps after YouTube's revenue share and unpaid or skippable impressions are factored in. As a rule of thumb, RPM lands roughly between 40% and 68% of CPM, which is why a channel with a $10 CPM rarely sees a matching $10 RPM.</p>
+    <p>In the report above, the estimated revenue is produced by combining the channel's detected content niche, its primary audience language and country, the ratio of long-form to Shorts content, and engagement signals such as average likes, comments, and view-per-video levels. The estimator then applies an industry RPM band for each niche — for example, finance and investing content typically carries one of the highest RPM ranges, while gaming and entertainment carry some of the lowest — and multiplies it against the channel's monthly view volume.</p>
+
+    <h3>Why geography matters more than most creators think</h3>
+    <p>Advertisers bid the most for audiences in high-purchasing-power regions, so viewer location drives CPM more than almost any other factor. Audiences in the United States, United Kingdom, Canada, Australia, and the Nordic countries typically generate the highest CPMs — commonly $10 to $25 or more for finance and business content. Western European audiences (Germany, France, the Netherlands, Spain) sit in the middle range, while viewers in South Asia, Southeast Asia, and parts of Latin America produce the lowest CPMs, often below $1 to $2.</p>
+    <p>The practical takeaway is that two channels with identical view counts can earn dramatically different amounts depending on where their traffic comes from. When you compare channels with our analyzer, pay attention to the audience country and language detected for each one. A channel with 500,000 views from India and a channel with 200,000 views from the United States may end up earning roughly the same ad revenue. This is also why targeting English-speaking audiences through video titles, captions, and topics is one of the most effective structural changes a creator can make to raise RPM.</p>
+
+    <h3>Mid-rolls and video length: raising your RPM without new viewers</h3>
+    <p>Video length directly affects how many ad placements a video can carry. Videos shorter than 8 minutes can only display pre-roll and post-roll ads, while videos of 8 minutes or longer unlock automatically placed mid-roll ad breaks. Because mid-roll ads are frequently more profitable per view than pre-rolls, moving from 7-minute to 8-plus-minute videos is one of the simplest ways to lift RPM for an existing audience.</p>
+    <p>Mid-roll placement matters too. A mid-roll inserted right before an abrupt scene change, at a natural transition, or after a "story point" resolves has a much higher completion rate than one dropped mid-sentence. YouTube's algorithm generally places mid-rolls at viewer drop-off points, so creators who pace their videos with logical sections and frequent natural breaks tend to see better ad completion and better retention simultaneously. For Shorts, the monetization model is different and the RPM is typically 92% to 95% lower than long-form, which is why Shorts are best treated as a discovery engine rather than a primary revenue source.</p>
   </div>
 </section>
 
 <!-- ======================== HOW IT WORKS ======================== -->
-<section class="section" id="features" style="background:var(--bg-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+<section class="section section-alt-bordered" id="features">
   <div class="container">
     <div class="section-header reveal">
       <div class="section-divider"></div>
@@ -513,49 +584,8 @@
   </div>
 </section>
 
-<!-- ======================== NORCANTO PROMO ======================== -->
-<section class="section" style="background:var(--bg-2);border-top:1px solid var(--border);">
-  <div class="container">
-    <div class="promo-section norcanto reveal">
-      <div class="promo-content">
-        <div class="promo-badge">Norcanto AI</div>
-        <h2 class="promo-title" id="norcanto-promo-title">Need to Work Smarter with Your Documents?</h2>
-        <p class="promo-text" id="norcanto-promo-text">Use Norcanto AI to analyze, summarize, translate, and leverage your documents with artificial intelligence. Trusted by thousands of professionals.</p>
-        <a href="https://norcanto.com/" target="_blank" rel="noopener" class="btn btn-lg" style="background:#fff;color:#0A0A0B;font-weight:700;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          Discover Norcanto AI
-        </a>
-      </div>
-      <div class="promo-visual">
-        <div class="promo-icon-wrap">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6v6l4 2"/></svg>
-        </div>
-      </div>
-    </div>
-
-    <div style="margin-top:24px;">
-      <div class="promo-section quickdocs reveal">
-        <div class="promo-content">
-          <div class="promo-badge">QuickDocs</div>
-          <h2 class="promo-title" id="quickdocs-promo-title">Convert Your Documents in Seconds</h2>
-          <p class="promo-text" id="quickdocs-promo-text">QuickDocs Converter allows you to quickly convert PDF, DOCX, PPTX, XLSX files and much more. Fast, secure, and free to use.</p>
-          <a href="https://norcanto.com/" target="_blank" rel="noopener" class="btn btn-lg" style="background:rgba(33,150,243,0.9);color:#fff;font-weight:700;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
-            <span id="quickdocs-promo-btn">Use QuickDocs Converter</span>
-          </a>
-        </div>
-        <div class="promo-visual">
-          <div class="promo-icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ======================== FAQ ======================== -->
-<section class="section" id="faq" style="border-top:1px solid var(--border);">
+<section class="section section-top-border" id="faq">
   <div class="container">
     <div class="section-header reveal">
       <div class="section-divider"></div>
@@ -620,8 +650,10 @@
       "@type": "FAQPage",
       "mainEntity": [
         {"@type":"Question","name":"How are YouTube earnings estimated?","acceptedAnswer":{"@type":"Answer","text":"We use RPM data based on the channel's detected niche, geographic audience, content type, and engagement metrics."}},
+        {"@type":"Question","name":"Are the statistics official YouTube data?","acceptedAnswer":{"@type":"Answer","text":"Channel statistics are retrieved from the YouTube Data API v3. Revenue estimates are proprietary calculations and are not provided directly by YouTube."}},
         {"@type":"Question","name":"How accurate are the revenue estimates?","acceptedAnswer":{"@type":"Answer","text":"Our estimates fall within a plausible range based on real market RPM data. Actual earnings vary based on advertiser demand, seasonal trends, and monetized view ratio."}},
         {"@type":"Question","name":"How does RPM work?","acceptedAnswer":{"@type":"Answer","text":"RPM is the amount a creator earns per 1,000 video views. It varies by niche and geography."}},
+        {"@type":"Question","name":"How can I increase my YouTube revenue?","acceptedAnswer":{"@type":"Answer","text":"Focus on higher-RPM niches, target English-speaking audiences, create longer videos for more ad placements, publish consistently, and diversify with sponsorships, memberships, and affiliate marketing."}},
         {"@type":"Question","name":"Do YouTube Shorts generate income?","acceptedAnswer":{"@type":"Answer","text":"Yes, but significantly less than long-form videos. Shorts RPM is typically 92–95% lower."}},
         {"@type":"Question","name":"Can I analyze any YouTube channel?","acceptedAnswer":{"@type":"Answer","text":"Yes, any public YouTube channel can be analyzed."}}
       ]
@@ -631,7 +663,7 @@
 </section>
 
 <!-- ======================== BLOG PREVIEW ======================== -->
-<section class="section" style="background:var(--bg-2);border-top:1px solid var(--border);">
+<section class="section section-alt">
   <div class="container">
     <div class="section-header reveal">
       <div class="section-divider"></div>
@@ -648,7 +680,7 @@
         </div>
         <div class="blog-body">
           <div class="blog-cat">YouTube Revenue</div>
-          <div class="blog-title">How Much Does YouTube Pay Per View in 2025?</div>
+          <div class="blog-title">How Much Does YouTube Pay Per View in 2026?</div>
           <div class="blog-excerpt">A complete breakdown of YouTube's CPM and RPM rates by country, niche, and content type — with real creator earnings examples.</div>
           <div class="blog-meta">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -662,7 +694,7 @@
           <div class="blog-cat">Channel Analysis</div>
           <div class="blog-title">How to Analyze a YouTube Channel Without Studio Access</div>
           <div class="blog-excerpt">A practical framework for evaluating public channel data, recent videos, engagement, and growth signals.</div>
-          <div class="blog-meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>June 14, 2026 Â· 15 min read</div>
+          <div class="blog-meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>June 14, 2026 · 15 min read</div>
         </div>
       </a>
       <a href="/blog/find-profitable-youtube-niches" class="blog-card reveal reveal-delay-2">
@@ -671,11 +703,11 @@
           <div class="blog-cat">Niche Research</div>
           <div class="blog-title">How to Find Profitable YouTube Niches Before They Become Saturated</div>
           <div class="blog-excerpt">A public-data research framework for evaluating demand, competition, monetization options, and repeatable topic depth.</div>
-          <div class="blog-meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>June 14, 2026 Â· 17 min read</div>
+          <div class="blog-meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>June 14, 2026 · 17 min read</div>
         </div>
       </a>
     </div>
-    <div style="text-align:center;margin-top:36px;">
+    <div class="promo-cta-center">
       <a href="/blog" class="btn btn-secondary btn-lg">
         View All Articles
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -707,8 +739,6 @@
       <div>
         <div class="footer-col-title">Norcanto</div>
         <div class="footer-links">
-          <a href="https://norcanto.com/" target="_blank" rel="noopener">Norcanto AI</a>
-          <a href="https://converter.norcanto.com" target="_blank" rel="noopener">QuickDocs Converter</a>
           <a href="/about">About</a>
         </div>
       </div>
@@ -734,7 +764,7 @@
 </footer>
 
 <!-- ======================== COOKIE BANNER ======================== -->
-<!-- HilltopAds Integration -->
+<!-- Google AdSense Integration -->
 <script src="/js/ads.js" defer></script><script src="/js/ad-manager.js" defer></script><script src="js/app.js" defer></script>
 
 </body>

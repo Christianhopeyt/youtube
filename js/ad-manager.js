@@ -15,7 +15,7 @@
       { id: 'home-above-footer', type: 'banner', anchor: '#footer', position: 'before' },
     ],
     analyzer: [
-      { id: 'analyzer-below-results', type: 'banner', anchor: '#results .container', position: 'append' },
+      { id: 'analyzer-below-results', type: 'banner', anchor: '#results', position: 'after' },
     ],
     blog: [
       { id: 'blog-after-intro', type: 'banner', articleIndex: 2 },
@@ -152,8 +152,8 @@
     hasAdConsent() {
       const category = CONFIG.consentCategory || 'advertisement';
 
-      // HilltopAds Integration
-      // Localhost-only verification hook because CookieYes blocks unregistered preview domains.
+      // Local preview hook: CookieYes is disabled on localhost, so a URL flag
+      // lets local testing approve or deny the ad category without a live CMP.
       if (/^(localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname)) {
         const previewConsent = new URLSearchParams(window.location.search).get('norlytics_ads_consent');
         if (previewConsent === 'granted') return true;
@@ -224,44 +224,58 @@
     },
   };
 
+  const loadAdsenseSdk = config => new Promise((resolve, reject) => {
+    if (window.adsbygoogle) return resolve();
+
+    const existing = document.querySelector('script[data-adsbygoogle-sdk]');
+    if (existing) {
+      existing.addEventListener('load', () => resolve());
+      existing.addEventListener('error', () => reject(new Error('AdSense SDK failed to load')));
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.crossOrigin = 'anonymous';
+    script.setAttribute('data-adsbygoogle-sdk', '1');
+    script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + encodeURIComponent(config.adsense.client);
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error('AdSense SDK failed to load'));
+    document.head.appendChild(script);
+  });
+
+  const fillAdSlot = (slot, config) => {
+    const client = config.adsense?.client;
+    const type = slot.dataset.adType || 'banner';
+    const unit = config.adsense?.slots?.[type] || {};
+    if (!client || !unit.slotId) return false;
+
+    const inner = slot.querySelector('.ad-slot-inner') || slot;
+    inner.innerHTML = '';
+
+    const ins = document.createElement('ins');
+    ins.className = 'adsbygoogle';
+    ins.style.display = 'block';
+    if (unit.width) ins.style.width = unit.width + 'px';
+    if (unit.height) ins.style.height = unit.height + 'px';
+    ins.setAttribute('data-ad-client', client);
+    ins.setAttribute('data-ad-slot', unit.slotId);
+    ins.setAttribute('data-ad-format', unit.format || 'auto');
+    if (unit.fullWidth) ins.setAttribute('data-full-width-responsive', 'true');
+    inner.appendChild(ins);
+
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
+    return true;
+  };
+
   const providers = {
-    // HilltopAds Integration
-    hilltopads: {
+    // Google AdSense Integration
+    adsense: {
       load(slot, config) {
+        if (!config.adsense?.client) return false;
         const type = slot.dataset.adType || 'banner';
-        const settings = {
-          ...(config.hilltopads?.slots?.[type] || {}),
-          ...(config.hilltopads?.placements?.[slot.dataset.adPlacement] || {}),
-        };
-        const inner = slot.querySelector('.ad-slot-inner') || slot;
-
-        if (settings.html) {
-          inner.innerHTML = settings.html;
-          inner.querySelectorAll('script').forEach(original => {
-            const script = document.createElement('script');
-            Array.from(original.attributes).forEach(attr => script.setAttribute(attr.name, attr.value));
-            script.text = original.textContent || '';
-            original.replaceWith(script);
-          });
-          return true;
-        }
-
-        const scriptUrl = settings.scriptUrl || config.hilltopads?.scriptUrl;
-        if (!scriptUrl) return false;
-
-        Object.entries(settings.dataset || {}).forEach(([key, value]) => {
-          inner.dataset[key] = String(value);
-        });
-
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = scriptUrl;
-        script.dataset.norlyticsAd = slot.dataset.adPlacement;
-        inner.appendChild(script);
-        return new Promise(resolve => {
-          script.onload = () => resolve(true);
-          script.onerror = () => resolve(false);
-        });
+        if (!config.adsense?.slots?.[type]?.slotId) return false;
+        return loadAdsenseSdk(config).then(() => fillAdSlot(slot, config));
       },
     },
   };

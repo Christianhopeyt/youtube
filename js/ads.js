@@ -3,44 +3,25 @@
    ======================== */
 'use strict';
 
-// HilltopAds Integration
-// Switch providers by changing this configuration and the provider adapter in ad-manager.js.
+// Google AdSense Integration
+// Ad units are injected by ad-manager.js only after the visitor accepts the
+// 'advertisement' consent category, so no Google ad tag runs before consent.
 window.NORLYTICS_ADS = {
-  provider: 'hilltopads',
+  provider: 'adsense',
   enabled: true,
   lazyLoad: true,
   consentCategory: 'advertisement',
-  hilltopads: {
-    // HilltopAds Integration
-    // Consent-gated global formats. These are loaded once after marketing/ad consent.
-    globalScripts: [
-      {
-        id: 'hilltopads-popunder',
-        format: 'popunder',
-        src: 'https://nautical-hand.com/cfD.9Y6/bu2X5llzSCWlQU9_NtzfIN0AO-D/AG2uNqSU0E3MM/jZQd4/MjDAYL5D',
-      },
-      {
-        id: 'hilltopads-multitag-inpage',
-        format: 'inpage',
-        src: 'https://quarrelsomebitter.com/bCXYV.sIdjG/lL0/YrWwcV/Kedmn9guoZFUOlXkSPUTsc/y-NiD/glxyO/DSkEtoNtzuIw0JOYDXEj5-MJwf',
-      },
-    ],
+  adsense: {
+    // Publisher ID shown in the AdSense account (Account > Settings).
+    client: 'ca-pub-8121112277976862',
+    // In-page display ad units. Each unit's slot ID comes from the AdSense
+    // dashboard: Ads > Ad units > (unit) > "Ad unit code" > data-ad-slot value.
+    // Paste the real slot IDs here. Units without a slot ID stay hidden and
+    // never fire a request.
     slots: {
-      banner: {
-        width: 970,
-        height: 250,
-        scriptUrl: 'https://quarrelsomebitter.com/b/X-VjsCd.GMl_0PYBWQcZ/Pe/mf9cu-ZDUCltk/PSTycUykN/DGgZyEMdDGUpthN/zRIi0WOaDmI/wsOqQi',
-      },
-      rectangle: {
-        width: 336,
-        height: 280,
-        scriptUrl: 'https://quarrelsomebitter.com/b/X-VjsCd.GMl_0PYBWQcZ/Pe/mf9cu-ZDUCltk/PSTycUykN/DGgZyEMdDGUpthN/zRIi0WOaDmI/wsOqQi',
-      },
-      sidebar: {
-        width: 300,
-        height: 600,
-        scriptUrl: 'https://quarrelsomebitter.com/b/X-VjsCd.GMl_0PYBWQcZ/Pe/mf9cu-ZDUCltk/PSTycUykN/DGgZyEMdDGUpthN/zRIi0WOaDmI/wsOqQi',
-      },
+      banner: { slotId: '', format: 'auto', width: 728, height: 90 },
+      rectangle: { slotId: '', format: 'auto', width: 336, height: 280 },
+      sidebar: { slotId: '', format: 'auto', width: 300, height: 600 },
     },
   },
 };

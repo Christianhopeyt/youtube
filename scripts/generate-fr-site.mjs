@@ -8,6 +8,19 @@ const publicPages = [
   'niche-insights/index.html',
   'blog/index.html',
   'blog/ai-tools-for-youtube-creators.html',
+  'blog/analyze-youtube-channel-without-studio.html',
+  'blog/best-time-to-post-on-youtube.html',
+  'blog/creator-economy-trends-2026.html',
+  'blog/faceless-youtube-channels.html',
+  'blog/find-youtube-video-ideas.html',
+  'blog/how-to-get-monetized-on-youtube.html',
+  'blog/youtube-ad-formats.html',
+  'blog/youtube-algorithm-2026.html',
+  'blog/youtube-community-building.html',
+  'blog/youtube-live-streaming-guide.html',
+  'blog/youtube-podcasts-guide.html',
+  'blog/youtube-premium-revenue.html',
+  'blog/youtube-watch-time-strategy.html',
   'blog/compare-youtube-channels.html',
   'blog/find-profitable-youtube-niches.html',
   'blog/grow-youtube-channel-fast.html',
@@ -23,6 +36,7 @@ const publicPages = [
   'blog/youtube-rpm-by-niche.html',
   'blog/youtube-shorts-monetization.html',
   'blog/youtube-sponsorship-guide.html',
+  'blog/youtube-seo.html',
   'about/index.html',
   'contact/index.html',
   'privacy/index.html',
@@ -31,16 +45,8 @@ const publicPages = [
 ];
 
 const skipTags = new Set(['script', 'style', 'svg', 'path', 'line', 'polyline', 'polygon', 'circle', 'rect']);
-const preservedTerms = ['YouTube', 'Norlytics', 'Norcanto', 'AdSense', 'Gemini', 'RPM', 'CPM', 'API', 'QuickDocs'];
+const preservedTerms = ['YouTube', 'Norlytics', 'Norcanto', 'AdSense', 'Gemini', 'RPM', 'CPM', 'API'];
 const untranslatedTokens = new Set(['EN', 'FR', 'Blog', 'Contact', 'Cookies', 'FAQ', 'USD']);
-const quarantinedSlugs = new Set([
-  'ai-tools-for-youtube-creators',
-  'grow-youtube-channel-fast',
-  'youtube-cpm-countries',
-  'youtube-rpm-by-niche',
-  'youtube-shorts-monetization',
-  'youtube-sponsorship-guide'
-]);
 const cachePath = path.join(root, '.translation-cache.json');
 let cache = {};
 
@@ -198,7 +204,7 @@ function localizeLinks(html, file) {
   return html.replace(/href="([^"]+)"/g, (_, href) => `href="${localizedInternalHref(file, href)}"`);
 }
 
-async function translateMetadata(html) {
+async function translateMetadata(html, frUrl) {
   const attributes = ['description', 'og:title', 'og:description', 'twitter:title', 'twitter:description'];
   for (const attribute of attributes) {
     const pattern = attribute.includes(':')
@@ -211,21 +217,28 @@ async function translateMetadata(html) {
   for (const script of scripts) {
     try {
       const data = JSON.parse(script[1]);
-      async function translateStructuredData(value, key = '') {
+      async function translateStructuredData(value, key = '', type = '') {
         if (Array.isArray(value)) {
           for (let index = 0; index < value.length; index += 1) {
-            value[index] = await translateStructuredData(value[index], key);
+            value[index] = await translateStructuredData(value[index], key, type);
           }
         } else if (value && typeof value === 'object') {
+          const nodeType = typeof value['@type'] === 'string' ? value['@type'] : type;
           for (const [childKey, childValue] of Object.entries(value)) {
-            value[childKey] = await translateStructuredData(childValue, childKey);
+            value[childKey] = await translateStructuredData(childValue, childKey, nodeType);
           }
-        } else if (typeof value === 'string' && ['headline', 'description', 'featureList', 'name', 'text'].includes(key)) {
-          return translate(value);
+        } else if (typeof value === 'string') {
+          if (key === 'name' && (type === 'Person' || value === 'Christian Hope')) return value;
+          if (['headline', 'description', 'featureList', 'name', 'text'].includes(key)) {
+            return translate(value);
+          }
         }
         return value;
       }
       await translateStructuredData(data);
+      if (data.mainEntityOfPage && typeof data.mainEntityOfPage === 'string' && data.mainEntityOfPage.startsWith('https://norcanto.com/')) {
+        data.mainEntityOfPage = frUrl;
+      }
       data.inLanguage = 'fr';
       html = html.replace(script[0], `<script type="application/ld+json">${JSON.stringify(data)}</script>`);
     } catch {
@@ -283,7 +296,7 @@ async function buildPage(file) {
   html = localizeLinks(html, file);
   html = await translateTextNodes(html);
   html = await translateAttributes(html);
-  html = await translateMetadata(html);
+  html = await translateMetadata(html, frUrl);
   const outputFile = file === 'blog/index.html'
     ? file
     : file.replace(/^blog\/(.+)\.html$/, 'blog/$1/index.html');
@@ -300,19 +313,35 @@ async function updateSitemap() {
   const sitemapPath = path.join(root, 'sitemap.xml');
   let sitemap = await fs.readFile(sitemapPath, 'utf8');
   sitemap = cleanAbsolutePublicUrls(sitemap);
-  sitemap = sitemap.replace(/\s*<url>\s*<loc>https:\/\/norcanto\.com\/fr(?:\/[^<]*)?<\/loc>[\s\S]*?<\/url>/g, '');
-  const frenchEntries = publicPages.filter(file => {
-    const match = file.match(/^blog\/(.+)\.html$/);
-    return !match || !quarantinedSlugs.has(match[1]);
-  }).map(file => [
+  const frRoot = path.join(root, 'fr');
+  const frFiles = [];
+  async function walk(dir) {
+    for (const entry of await fs.readdir(dir, { withFileTypes: true })) {
+      if (entry.name === 'node_modules' || entry.name === '.git') continue;
+      const target = path.join(dir, entry.name);
+      if (entry.isDirectory()) await walk(target);
+      else if (entry.name.endsWith('.html')) frFiles.push(target);
+    }
+  }
+  await walk(frRoot);
+  const pageUrlFor = file => {
+    const relative = path.relative(frRoot, file).split(path.sep).join('/');
+    const clean = relative === 'index.html'
+      ? ''
+      : relative.replace(/\/index\.html$/, '').replace(/\.html$/, '').replace(/\/$/, '');
+    return `https://norcanto.com/fr${publicPath(clean) ? '/' + publicPath(clean) : ''}`;
+  };
+  const missing = frFiles.filter(file => !sitemap.includes(`<loc>${pageUrlFor(file)}</loc>`));
+  if (missing.length === 0) return;
+  const entries = missing.map(file => [
     '  <url>',
-    `    <loc>${pageUrl(file, 'fr')}</loc>`,
+    `    <loc>${pageUrlFor(file)}</loc>`,
     '    <lastmod>2026-06-11</lastmod>',
     '    <changefreq>monthly</changefreq>',
     '    <priority>0.7</priority>',
     '  </url>'
   ].join('\n')).join('\n');
-  sitemap = sitemap.replace('</urlset>', `${frenchEntries}\n</urlset>`);
+  sitemap = sitemap.replace('</urlset>', `${entries}\n</urlset>`);
   await fs.writeFile(sitemapPath, sitemap, 'utf8');
 }
 

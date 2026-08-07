@@ -1,8 +1,9 @@
 'use strict';
 
 const { getCached, setCached } = require('./lib/cache');
+const { fetchChannelDashboardSource } = require('./lib/youtube');
+const { analyzeChannel } = require('./lib/channel-analytics');
 
-const API_BASE = 'https://www.googleapis.com/youtube/v3';
 const CACHE_TTL = 24 * 60 * 60 * 1000;
 const rateLimits = new Map();
 
@@ -28,32 +29,17 @@ function withinRateLimit(event) {
   return true;
 }
 
-async function youtubeRequest(path, params, apiKey) {
-  const url = new URL(`${API_BASE}/${path}`);
-  Object.entries({ ...params, key: apiKey }).forEach(([key, value]) => url.searchParams.set(key, value));
-  const response = await fetch(url);
-  const data = await response.json();
-  if (!response.ok || data.error) {
-    const error = new Error(data.error?.message || `YouTube API request failed (${response.status})`);
-    error.status = response.status;
-    throw error;
-  }
-  return data;
-}
-
-async function resolveChannelId(type, value, apiKey) {
-  if (type === 'id') return value;
-
-  const byHandle = await youtubeRequest('channels', { part: 'id', forHandle: value }, apiKey);
-  if (byHandle.items?.[0]?.id) return byHandle.items[0].id;
-
-  const search = await youtubeRequest('search', {
-    part: 'snippet',
-    type: 'channel',
-    q: value,
-    maxResults: '1'
-  }, apiKey);
-  return search.items?.[0]?.snippet?.channelId || null;
+function videoCard(video) {
+  return {
+    id: video.id,
+    title: video.title,
+    thumbnail: video.thumbnail || '',
+    publishedAt: video.publishedAt,
+    views: Number(video.views) || 0,
+    viewsPerDay: video.viewsPerDay,
+    engagementRate: video.engagementRate,
+    url: video.url
+  };
 }
 
 exports.handler = async event => {
@@ -72,30 +58,30 @@ exports.handler = async event => {
   if (cached) return json(200, { ...cached.value, cached: true });
 
   try {
-    const channelId = await resolveChannelId(type, value, apiKey);
-    if (!channelId) return json(404, { code: 'CHANNEL_NOT_FOUND', error: 'Channel not found.' });
+    const source = await fetchChannelDashboardSource({ type, value, apiKey });
+    if (!source) return json(404, { code: 'CHANNEL_NOT_FOUND', error: 'Channel not found.' });
 
-    const data = await youtubeRequest('channels', {
-      part: 'snippet,statistics,brandingSettings',
-      id: channelId
-    }, apiKey);
-    const channel = data.items?.[0];
-    if (!channel) return json(404, { code: 'CHANNEL_NOT_FOUND', error: 'Channel not found.' });
-
-    const hiddenSubscriberCount = Boolean(channel.statistics?.hiddenSubscriberCount);
+    const { channel } = source;
+    const analytics = analyzeChannel(source.videos, channel);
+    const hiddenSubscriberCount = Boolean(channel.hiddenSubscriberCount);
     const result = {
       id: channel.id,
-      title: channel.snippet?.title || '',
-      handle: channel.snippet?.customUrl || '',
-      description: channel.snippet?.description || '',
-      publishedAt: channel.snippet?.publishedAt,
-      country: channel.snippet?.country || null,
-      avatar: channel.snippet?.thumbnails?.high?.url || channel.snippet?.thumbnails?.default?.url || null,
-      banner: channel.brandingSettings?.image?.bannerExternalUrl || null,
-      subscriberCount: hiddenSubscriberCount ? null : Number(channel.statistics?.subscriberCount) || 0,
+      title: channel.title || '',
+      handle: channel.handle || '',
+      description: channel.description || '',
+      publishedAt: channel.publishedAt,
+      country: channel.country || null,
+      avatar: channel.avatar,
+      banner: channel.banner,
+      subscriberCount: hiddenSubscriberCount ? null : Number(channel.subscriberCount) || 0,
       hiddenSubscriberCount,
-      viewCount: channel.statistics?.viewCount || 0,
-      videoCount: channel.statistics?.videoCount || 0
+      viewCount: Number(channel.viewCount) || 0,
+      videoCount: Number(channel.videoCount) || 0,
+      engagementRate: analytics.performance?.recent?.averageEngagementRate ?? null,
+      averageViewsPerDay: analytics.performance?.recent?.medianViewsPerDay ?? null,
+      growthPercent: analytics.performance?.growthPercent ?? null,
+      topVideos: (analytics.topVideos || []).slice(0, 8).map(videoCard),
+      recentVideos: (analytics.recentVideos || []).slice(0, 10).map(videoCard)
     };
     await setCached(cacheKey, result, CACHE_TTL);
     return json(200, result);

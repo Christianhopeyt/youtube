@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" role="img" aria-labelledby="t">
+  <title id="t">How YouTube Premium revenue is distributed to creators</title>
+  <rect width="800" height="440" rx="20" fill="#0f1117"/>
+  <text x="400" y="46" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" fill="#ffffff">How Premium watch time pays creators</text>
+  <rect x="50" y="120" width="200" height="100" rx="14" fill="#1d2128" stroke="#ff0000" stroke-width="2"/>
+  <text x="150" y="156" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#ff6b6b">Premium members</text>
+  <text x="150" y="180" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#e8eaed">Pay a monthly fee,</text>
+  <text x="150" y="198" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#e8eaed">see no ads</text>
+  <line x1="250" y1="170" x2="330" y2="170" stroke="#3a4049" stroke-width="3"/>
+  <polygon points="330,163 346,170 330,177" fill="#3a4049"/>
+  <rect x="348" y="120" width="240" height="100" rx="14" fill="#1d2128" stroke="#ff0000" stroke-width="2"/>
+  <text x="468" y="156" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#ff6b6b">Creator revenue pool</text>
+  <text x="468" y="180" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#e8eaed">Subscription fees allocated</text>
+  <text x="468" y="198" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#e8eaed">for creator payouts</text>
+  <line x1="588" y1="170" x2="668" y2="170" stroke="#3a4049" stroke-width="3"/>
+  <polygon points="668,163 684,170 668,177" fill="#3a4049"/>
+  <rect x="686" y="120" width="70" height="100" rx="14" fill="#1d2128" stroke="#ff0000" stroke-width="2"/>
+  <text x="721" y="156" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" fill="#ff6b6b">55%</text>
+  <text x="721" y="178" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#e8eaed">creators</text>
+  <text x="721" y="194" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#9aa0a6">45%</text>
+  <text x="721" y="210" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#9aa0a6">YouTube</text>
+  <rect x="150" y="270" width="500" height="80" rx="14" fill="#1d2128"/>
+  <text x="400" y="300" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff">Distributed by share of Premium watch time</text>
+  <text x="400" y="326" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#e8eaed">Your payout = pool x (your Premium watch time / total Premium watch time)</text>
+  <text x="400" y="396" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#9aa0a6">Premium views also count toward the 4,000-hour long-form threshold</text>
+</svg>

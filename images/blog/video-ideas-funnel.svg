@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" role="img" aria-labelledby="t">
+  <title id="t">The data-backed funnel for finding YouTube video ideas</title>
+  <rect width="800" height="440" rx="20" fill="#0f1117"/>
+  <text x="400" y="46" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" fill="#ffffff">Find video ideas with data, not guesses</text>
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#e8eaed" text-anchor="middle">
+    <polygon points="80,90 720,90 620,130 180,130" fill="#1d2128" stroke="#ff0000" stroke-width="2"/>
+    <text x="400" y="108">Search bar autocomplete and related searches (real queries)</text>
+    <polygon points="180,150 620,150 540,190 260,190" fill="#1d2128" stroke="#ff0000" stroke-width="2"/>
+    <text x="400" y="168">Comments and FAQ gaps on top-ranking videos</text>
+    <polygon points="260,210 540,210 480,250 320,250" fill="#1d2128" stroke="#ff0000" stroke-width="2"/>
+    <text x="400" y="228">Public channel data: top videos, upload cadence, growth</text>
+    <polygon points="320,270 480,270 450,310 350,310" fill="#ff0000"/>
+    <text x="400" y="288" font-weight="700" fill="#ffffff">Ranked idea list</text>
+    <text x="400" y="306" fill="#ffffff">with an angle and a title</text>
+  </g>
+  <text x="400" y="360" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#9aa0a6">Validate each idea against three tests: demand, your fit, and whether the video can be repeated</text>
+  <text x="400" y="420" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#9aa0a6">Norlytics Creator Dashboard and Niche Insights surface the public-data signals behind each idea</text>
+</svg>

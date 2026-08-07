@@ -66,6 +66,21 @@ const LangManager = {
       result_views:      'Total Views',
       result_videos:     'Videos',
       result_created:    'Channel Created',
+      result_engagement: 'Engagement Rate',
+      views:             'views',
+      per_day:           '/day',
+      top_videos:        'Top Videos',
+      top_videos_note:   'Ranked by average daily views across recent uploads.',
+      share_btn:         'Share Report',
+      print_btn:         'Export PDF',
+      compare_btn:       'Compare',
+      compare_title:     'Compare With Another Channel',
+      compare_hint:      'Paste a second channel URL to compare side by side.',
+      compare_go:        'Compare',
+      compare_metric:    'Metric',
+      compare_views_day: 'Views / day (recent)',
+      share_copied:      'Report copied to clipboard.',
+      share_failed:      'Could not copy the report.',
       monthly_revenue:   'Monthly Revenue',
       annual_revenue:    'Annual Revenue',
       minimum:           'Minimum',
@@ -73,12 +88,6 @@ const LangManager = {
       maximum:           'Maximum',
       business_score:    'Business Potential Score',
       score_subtitle:    'Composite monetization potential',
-      norcanto_title:    'Need to Work Smarter with Your Documents?',
-      norcanto_text:     'Use Norcanto AI to analyze, summarize, translate, and leverage your documents with artificial intelligence.',
-      norcanto_btn:      'Discover Norcanto AI',
-      quickdocs_title:   'Convert Your Documents in Seconds',
-      quickdocs_text:    'QuickDocs Converter allows you to quickly convert PDF, DOCX, PPTX, XLSX files and much more. Fast, secure, and free.',
-      quickdocs_btn:     'Use QuickDocs Converter',
       about_title:       'About Norlytics',
       about_sub:         'Norlytics gives creators and marketers clear YouTube channel analytics, revenue estimates, and niche opportunity insights.',
       about_mission_h:   'Our Mission',
@@ -171,6 +180,21 @@ const LangManager = {
       result_views:      'Vues Totales',
       result_videos:     'Vid\u00e9os',
       result_created:    'Cha\u00eene Cr\u00e9\u00e9e',
+      result_engagement: "Taux d'Engagement",
+      views:             'vues',
+      per_day:           '/jour',
+      top_videos:        'Meilleures Vid\u00e9os',
+      top_videos_note:   'Class\u00e9es par vues quotidiennes moyennes sur les derniers uploads.',
+      share_btn:         'Partager le Rapport',
+      print_btn:         'Exporter en PDF',
+      compare_btn:       'Comparer',
+      compare_title:     'Comparer avec une Autre Cha\u00eene',
+      compare_hint:      "Collez une deuxi\u00e8me URL de cha\u00eene pour comparer c\u00f4te \u00e0 c\u00f4te.",
+      compare_go:        'Comparer',
+      compare_metric:    'M\u00e9trique',
+      compare_views_day: 'Vues / jour (r\u00e9centes)',
+      share_copied:      'Rapport copi\u00e9 dans le presse-papiers.',
+      share_failed:      'Impossible de copier le rapport.',
       monthly_revenue:   'Revenus Mensuels',
       annual_revenue:    'Revenus Annuels',
       minimum:           'Minimum',
@@ -178,12 +202,6 @@ const LangManager = {
       maximum:           'Maximum',
       business_score:    'Score de Potentiel Commercial',
       score_subtitle:    'Potentiel de mon\u00e9tisation composite',
-      norcanto_title:    'Besoin de Travailler Plus Intelligemment avec vos Documents\u00a0?',
-      norcanto_text:     "Utilisez Norcanto AI pour analyser, r\u00e9sumer, traduire et exploiter vos documents gr\u00e2ce \u00e0 l'intelligence artificielle.",
-      norcanto_btn:      'D\u00e9couvrir Norcanto AI',
-      quickdocs_title:   'Convertissez vos Documents en Quelques Secondes',
-      quickdocs_text:    'QuickDocs Converter vous permet de convertir rapidement des fichiers PDF, DOCX, PPTX, XLSX et bien plus encore.',
-      quickdocs_btn:     'Utiliser QuickDocs Converter',
       about_title:       '\u00c0 Propos de Norlytics',
       about_sub:         "Norlytics offre aux cr\u00e9ateurs et sp\u00e9cialistes marketing des analyses YouTube claires, des estimations de revenus et des insights sur les opportunit\u00e9s de niche.",
       about_mission_h:   'Notre Mission',
@@ -304,12 +322,6 @@ const LangManager = {
     txt('step1-title',       'step1_title');  txt('step1-desc', 'step1_desc');
     txt('step2-title',       'step2_title');  txt('step2-desc', 'step2_desc');
     txt('step3-title',       'step3_title');  txt('step3-desc', 'step3_desc');
-    txt('norcanto-promo-title',   'norcanto_title');
-    txt('norcanto-promo-text',    'norcanto_text');
-    txt('norcanto-promo-btn',     'norcanto_btn');
-    txt('quickdocs-promo-title',  'quickdocs_title');
-    txt('quickdocs-promo-text',   'quickdocs_text');
-    txt('quickdocs-promo-btn',    'quickdocs_btn');
 
     // Hero badge
     const badge = qs('.hero-badge');
@@ -326,6 +338,19 @@ const LangManager = {
     txt('stat-label-created', 'result_created');
     txt('res-score-title',    'business_score');
     txt('res-score-subtitle', 'score_subtitle');
+
+    // Results engagement card + report actions + top videos + compare
+    txt('stat-label-engagement', 'result_engagement');
+    txt('top-videos-title',       'top_videos');
+    txt('top-videos-note',        'top_videos_note');
+    txt('res-share-btn-text',     'share_btn');
+    txt('res-print-btn-text',     'print_btn');
+    txt('res-compare-btn-text',   'compare_btn');
+    txt('compare-title',          'compare_title');
+    txt('compare-hint',           'compare_hint');
+    txt('compare-go-text',        'compare_go');
+    const ci = q('compare-input');
+    if (ci) ci.placeholder = s.compare_hint;
 
     // Revenue period labels (contain SVG, so use childNode text)
     const patchPeriod = (id, key) => {
@@ -741,6 +766,11 @@ const Analyzer = {
       publishedAt:sn.publishedAt, ageMonths:ageMo,
       niche:detectNiche(sn.title,sn.description), language:lang,
       country:sn.country||detectCountry(lang), source:'live',
+      engagementRate: Number.isFinite(ch.engagementRate) ? ch.engagementRate : null,
+      averageViewsPerDay: Number.isFinite(ch.averageViewsPerDay) ? ch.averageViewsPerDay : null,
+      growthPercent: Number.isFinite(ch.growthPercent) ? ch.growthPercent : null,
+      topVideos: Array.isArray(ch.topVideos) ? ch.topVideos : [],
+      recentVideos: Array.isArray(ch.recentVideos) ? ch.recentVideos : [],
     };
   },
 
@@ -814,6 +844,7 @@ const Analyzer = {
     set('res-views',    fmtNum(data.viewCount));
     set('res-videos',   fmtNum(data.videoCount));
     set('res-created',  new Date(data.publishedAt).toLocaleDateString(LangManager.current === 'FR' ? 'fr-FR' : 'en-US',{year:'numeric',month:'long'}));
+    set('res-engagement', data.engagementRate == null ? '—' : data.engagementRate.toFixed(1)+'%');
 
     // Revenue
     set('res-month-min', fmtUSD(rev.monthly.min));
@@ -840,6 +871,14 @@ const Analyzer = {
     set('res-affiliate-val', score.affiliate+'/100');
     set('res-growth-val',    score.growth+'/100');
 
+    // Top videos list
+    this.lastData = data;
+    renderTopVideos(data.topVideos);
+
+    // Compare section: keep it usable after a fresh analysis
+    const cmp = document.getElementById('compare-section');
+    if (cmp) cmp.hidden = false;
+
     // ── CRITICAL: only call pushState if we're on a real server,
     // NOT on file:// and NOT if it would cause a 404 navigation on Netlify.
     // We use replaceState with a hash instead so no page reload ever happens.
@@ -852,8 +891,141 @@ const Analyzer = {
 
     document.title = `${data.title} — Norlytics`;
     showToast(this.text('analysis_complete'),'success');
+  },
+
+  initCompare() {
+    const toggle = document.getElementById('res-compare-btn');
+    const section = document.getElementById('compare-section');
+    const go = document.getElementById('compare-go');
+    const input = document.getElementById('compare-input');
+    if (toggle && section) {
+      toggle.addEventListener('click', () => { section.hidden = !section.hidden; });
+    }
+    if (!go || !input) return;
+    const runCompare = () => { const v = input.value.trim(); if (!v) { this.showError(this.text('empty_channel')); return; } this.compare(v); };
+    go.addEventListener('click', runCompare);
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); runCompare(); } });
+  },
+
+  async compare(raw) {
+    const parsed = this.parse(raw);
+    if (!parsed) { this.showError(this.text('invalid_channel')); return; }
+    const box = document.getElementById('compare-result');
+    if (box) box.innerHTML = '<div class="compare-loading">…</div>';
+    try {
+      const other = await this.ytFetch(parsed);
+      this.compareData = other;
+      renderCompare(this.lastData, other);
+    } catch (err) {
+      console.error('[YTA compare]', err);
+      showToast(this.text('analysis_failed'),'error');
+    }
+  },
+
+  share() {
+    if (!this.lastData) return;
+    const text = reportText(this.lastData);
+    const done = () => showToast(this.text('share_copied'),'success');
+    const fail = () => showToast(this.text('share_failed'),'error');
+    if (navigator.clipboard?.writeText) {
+      navigator.clipboard.writeText(text).then(done, fail);
+    } else {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); done(); } catch(_) { fail(); }
+      ta.remove();
+    }
+  },
+
+  print() {
+    if (!this.lastData) return;
+    window.print();
   }
 };
+
+/* ========================
+   ANALYZER — top videos, report, comparison
+   ======================== */
+function escapeHtml(str) {
+  return String(str ?? '')
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+function renderTopVideos(list) {
+  const section = document.getElementById('top-videos-section');
+  const box = document.getElementById('res-top-videos-list');
+  if (!section || !box) return;
+  if (!list || !list.length) { section.hidden = true; return; }
+  section.hidden = false;
+  const dateFmt = ms => new Date(ms).toLocaleDateString(LangManager.current === 'FR' ? 'fr-FR' : 'en-US', { year:'numeric', month:'short' });
+  box.innerHTML = list.map((v, i) => {
+    const eng = v.engagementRate == null ? '—' : v.engagementRate.toFixed(1)+'%';
+    const meta = `${fmtNum(v.views)} ${Analyzer.text('views')} · ${fmtNum(Math.round(v.viewsPerDay||0))} ${Analyzer.text('per_day')} · ${dateFmt(v.publishedAt)}`;
+    return `<a class="top-video" href="${v.url || '#'}" target="_blank" rel="noopener">
+      <span class="top-video-rank">${i+1}</span>
+      <img class="top-video-thumb" src="${v.thumbnail || ''}" alt="" loading="lazy" />
+      <span class="top-video-body">
+        <span class="top-video-title">${escapeHtml(v.title)}</span>
+        <span class="top-video-meta">${meta}</span>
+      </span>
+      <span class="top-video-eng">${eng}</span>
+    </a>`;
+  }).join('');
+}
+
+function reportText(data) {
+  const L = key => Analyzer.text(key);
+  const rev = calcRevenue(data);
+  const score = calcScore(data, rev);
+  const lines = [
+    `${data.title} — Norlytics`,
+    data.handle || '',
+    `${L('result_subs')}: ${data.hiddenSubscriberCount ? '—' : fmtNum(data.subscriberCount)}`,
+    `${L('result_views')}: ${fmtNum(data.viewCount)}`,
+    `${L('result_videos')}: ${fmtNum(data.videoCount)}`,
+    `${L('result_engagement')}: ${data.engagementRate == null ? '—' : data.engagementRate.toFixed(1)+'%'}`,
+    `${L('monthly_revenue')} (${L('minimum')}–${L('maximum')}): ${fmtUSD(rev.monthly.min)} – ${fmtUSD(rev.monthly.max)}`,
+    `${L('business_score')}: ${score.score}/100 (${score.level})`
+  ];
+  return lines.join('\n');
+}
+
+function renderCompare(a, b) {
+  const box = document.getElementById('compare-result');
+  if (!box) return;
+  if (!a || !b) { box.hidden = true; return; }
+  const L = key => Analyzer.text(key);
+  const dateFmt = ms => new Date(ms).toLocaleDateString(LangManager.current === 'FR' ? 'fr-FR' : 'en-US', { year:'numeric', month:'long' });
+  const rows = [
+    ['result_subs',      x => x.hiddenSubscriberCount ? '—' : fmtNum(x.subscriberCount)],
+    ['result_views',     x => fmtNum(x.viewCount)],
+    ['result_videos',    x => fmtNum(x.videoCount)],
+    ['result_engagement',x => x.engagementRate == null ? '—' : x.engagementRate.toFixed(1)+'%'],
+    ['compare_views_day',x => x.averageViewsPerDay == null ? '—' : fmtNum(Math.round(x.averageViewsPerDay))],
+    ['result_created',   x => dateFmt(x.publishedAt)],
+    ['monthly_revenue',  x => { const r = calcRevenue(x); return `${fmtUSD(r.monthly.min)} – ${fmtUSD(r.monthly.max)}`; }],
+    ['business_score',   x => { const s = calcScore(x, calcRevenue(x)); return `${s.score}/100 (${s.level})`; }]
+  ];
+  box.innerHTML = `
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th class="compare-metric">${L('compare_metric')}</th>
+            <th><span class="compare-rank">A</span> ${escapeHtml(a.title)}</th>
+            <th><span class="compare-rank">B</span> ${escapeHtml(b.title)}</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows.map(([key, fn]) => `<tr><td class="compare-metric">${L(key)}</td><td>${fn(a)}</td><td>${fn(b)}</td></tr>`).join('')}
+        </tbody>
+      </table>
+    </div>`;
+  box.hidden = false;
+}
 
 /* ========================
    DOM HELPERS
@@ -1097,6 +1269,14 @@ function initForm() {
   });
 }
 
+function initResultsActions() {
+  const share = document.getElementById('res-share-btn');
+  const printBtn = document.getElementById('res-print-btn');
+  if (share) share.addEventListener('click', () => Analyzer.share());
+  if (printBtn) printBtn.addEventListener('click', () => Analyzer.print());
+  Analyzer.initCompare();
+}
+
 /* ========================
    BOOT
    ======================== */
@@ -1109,6 +1289,7 @@ document.addEventListener('DOMContentLoaded', () => {
   MobileMenu.init();
   ScrollReveal.init();
   initForm();
+  initResultsActions();
   Calc.init();
   FAQ.init();
   initSmoothScroll();

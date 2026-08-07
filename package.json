@@ -2,7 +2,7 @@
   "name": "norlytics-site",
   "private": true,
   "scripts": {
-    "test": "node --test --test-isolation=none tests/*.test.js",
+    "test": "node --test tests",
     "build:fr": "node scripts/generate-fr-site.mjs"
   },
   "dependencies": {

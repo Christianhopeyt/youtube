@@ -51,16 +51,22 @@ test('CookieYes loads once and advertising uses the local ad manager', () => {
     assert.match(html, /<script src="\/js\/ad-manager\.js" defer><\/script>/, relative);
     assert.ok(html.indexOf('/js/ads.js') < html.indexOf('/js/ad-manager.js'), relative);
     assert.doesNotMatch(html, /id="cookie-banner"|id="cookie-accept"|id="cookie-reject"/, relative);
+    assert.doesNotMatch(html, /HilltopAds|hilltopads/i, relative);
   });
 
   const app = fs.readFileSync(path.join(root, 'js', 'app.js'), 'utf8');
   assert.doesNotMatch(app, /ConsentManager|CookieBanner|yta-cookies/);
   const config = fs.readFileSync(path.join(root, 'js', 'ads.js'), 'utf8');
   const manager = fs.readFileSync(path.join(root, 'js', 'ad-manager.js'), 'utf8');
-  assert.match(config, /provider:\s*'hilltopads'/);
+  assert.doesNotMatch(config, /hilltopads|quarrelsomebitter/i);
+  assert.match(config, /provider:\s*'adsense'/);
+  assert.match(config, /ca-pub-8121112277976862/);
   assert.match(config, /lazyLoad:\s*true/);
+  assert.match(config, /consentCategory:\s*'advertisement'/);
   assert.match(manager, /IntersectionObserver/);
-  assert.match(manager, /HilltopAds Integration/);
+  assert.match(manager, /Google AdSense Integration/);
+  assert.match(manager, /data-ad-slot/);
+  assert.match(manager, /adsbygoogle/);
   [
     'home-below-hero',
     'home-between-features',

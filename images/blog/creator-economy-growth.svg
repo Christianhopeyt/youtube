@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" role="img" aria-labelledby="t">
+  <title id="t">Growth of the global creator economy toward 2027</title>
+  <rect width="800" height="440" rx="20" fill="#0f1117"/>
+  <text x="400" y="46" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" fill="#ffffff">Global creator economy, in billions of dollars</text>
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#e8eaed">
+    <rect x="180" y="250" width="90" height="110" rx="8" fill="#3a4049"/>
+    <text x="225" y="242" text-anchor="middle" fill="#ffffff">$100B</text>
+    <text x="225" y="382" text-anchor="middle" fill="#9aa0a6">2023</text>
+
+    <rect x="330" y="160" width="90" height="200" rx="8" fill="#ff0000"/>
+    <text x="375" y="152" text-anchor="middle" fill="#ffffff">$250B</text>
+    <text x="375" y="382" text-anchor="middle" fill="#9aa0a6">2026</text>
+
+    <rect x="480" y="70" width="90" height="290" rx="8" fill="#ff6b6b"/>
+    <text x="525" y="62" text-anchor="middle" fill="#ffffff">$480B</text>
+    <text x="525" y="382" text-anchor="middle" fill="#9aa0a6">2027 proj.</text>
+  </g>
+  <line x1="140" y1="130" x2="600" y2="130" stroke="#3a4049" stroke-width="1" stroke-dasharray="4 6"/>
+  <text x="140" y="116" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#9aa0a6">Estimate, Goldman Sachs Research</text>
+  <text x="400" y="420" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#9aa0a6">Only about 4% of active creators earn above $100,000 a year</text>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" role="img" aria-labelledby="t">
+  <title id="t">Illustrative low, typical, and high RPM scenarios by niche</title>
+  <rect width="800" height="440" rx="20" fill="#0f1117"/>
+  <text x="400" y="44" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" fill="#ffffff">RPM scenario ranges by niche type</text>
+  <text x="400" y="68" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#9aa0a6">Illustrative scenarios for planning, not channel earnings</text>
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#9aa0a6" text-anchor="middle">
+    <line x1="240" y1="330" x2="240" y2="80" stroke="#3a4049" stroke-width="2"/>
+    <text x="216" y="84">Low</text>
+    <text x="216" y="130">Typical</text>
+    <text x="216" y="300">High</text>
+    <line x1="232" y1="130" x2="248" y2="130" stroke="#3a4049" stroke-width="1"/>
+  </g>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <rect x="280" y="60" width="22" height="30" rx="5" fill="#ff6b6b"/>
+    <text x="291" y="110" text-anchor="middle" font-size="13" fill="#e8eaed">Finance</text>
+    <rect x="360" y="120" width="22" height="160" rx="5" fill="#ff6b6b"/>
+    <rect x="340" y="70" width="22" height="210" rx="5" fill="#ff0000"/>
+    <text x="351" y="302" text-anchor="middle" font-size="13" fill="#e8eaed">Software</text>
+    <rect x="420" y="130" width="22" height="140" rx="5" fill="#ff6b6b"/>
+    <rect x="400" y="90" width="22" height="180" rx="5" fill="#ff0000"/>
+    <text x="411" y="292" text-anchor="middle" font-size="13" fill="#e8eaed">Education</text>
+    <rect x="480" y="150" width="22" height="110" rx="5" fill="#ff6b6b"/>
+    <rect x="460" y="110" width="22" height="150" rx="5" fill="#ff0000"/>
+    <text x="471" y="282" text-anchor="middle" font-size="13" fill="#e8eaed">Gaming</text>
+    <rect x="540" y="160" width="22" height="90" rx="5" fill="#ff6b6b"/>
+    <rect x="520" y="130" width="22" height="120" rx="5" fill="#ff0000"/>
+    <text x="531" y="272" text-anchor="middle" font-size="13" fill="#e8eaed">Entertainment</text>
+  </g>
+  <text x="400" y="416" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#9aa0a6">Bars show low/typical/high. Actual RPM depends on country mix, length, and format.</text>
+</svg>

@@ -4,11 +4,15 @@ Audit date: June 14, 2026
 
 Update note: This report has been superseded by the July 22, 2026 weak-page upgrade in `ADSENSE_CONTENT_UPGRADE_REPORT.md`. The articles listed below as temporarily quarantined were later rewritten, made indexable, restored to discovery surfaces, and re-added to the sitemap.
 
+Update note (August 7, 2026): The advertising stack was switched from the consent-gated HilltopAds manager to a Google AdSense provider. `js/ads.js` now configures `provider: 'adsense'` with the `ca-pub-8121112277976862` publisher ID; `js/ad-manager.js` lazily loads `adsbygoogle.js` and injects in-page `ins.adsbygoogle` display units only after the visitor accepts the CookieYes `advertisement` category. All `HilltopAds` markers were removed from HTML, the cookie policy was updated to reference Google AdSense only, and the regression tests now enforce the AdSense provider. Real ad-unit slot IDs must be pasted into `js/ads.js` (`slots.banner.slotId`, `slots.rectangle.slotId`, `slots.sidebar.slotId`) from the AdSense dashboard before units can render.
+
+Update note (August 7, 2026): The DNS inconsistency described below is **resolved**. The stale apex A (`54.232.119.62`) and AAAA (`2600:1f1e:7c1:c300::258`) records were deleted; the apex is now a DNS-only CNAME to `norlytics.netlify.app`. Verified at the authoritative Cloudflare nameservers: apex A → `35.157.26.135`/`63.176.8.218`, apex AAAA → `2a05:d014:58f:6200::258/259`, and `www.norcanto.com` CNAME → `norlytics.netlify.app` with no stale AAAA.
+
 ## Readiness After Repository Fixes
 
-Estimated readiness: **moderate, pending DNS repair and content expansion**.
+Estimated readiness: **moderate, pending content expansion** (DNS records are now consistent and consolidated on Netlify targets).
 
-The repository now has a substantially safer AdSense-review posture, but the live domain should not be submitted until its DNS records are consolidated and repeated external requests are stable.
+The repository now has a substantially safer AdSense-review posture, and the live domain's DNS records are consolidated on Netlify targets. Repeated external requests should be re-verified from multiple regions before submitting to AdSense.
 
 ## Passed
 
@@ -51,14 +55,14 @@ Each is approximately 335-340 words and shares a near-identical template.
 
 ## Remaining Risks
 
-### Critical: DNS inconsistency and intermittent delivery
+### Resolved: DNS inconsistency and intermittent delivery
 
-External DNS resolvers returned different production targets:
+Previously, external DNS resolvers returned different production targets:
 
 - Cloudflare DNS returned Netlify targets `35.157.26.135` and `63.176.8.218`.
 - Google DNS and the local resolver returned `54.232.119.62` and a different IPv6 target.
 
-Requests routed through the latter target were extremely slow, incomplete, or failed. Review the authoritative DNS zone and Netlify custom-domain setup. Remove stale/conflicting A and AAAA records, then wait for DNS propagation and verify from multiple regions before applying to AdSense.
+Requests routed through the latter target were extremely slow, incomplete, or failed. **Fixed August 7, 2026:** the stale apex A/AAAA records were removed and the apex now points to `norlytics.netlify.app` via a DNS-only CNAME. Verified at the authoritative nameservers that apex A/AAAA and `www` all resolve to Netlify targets. No action remains; only residual resolver cache expiry should be observed.
 
 ### High: Google-certified CMP
 
@@ -70,11 +74,11 @@ Several retained articles remain below 1,000 words. They are distinct enough to 
 
 ### Medium: Trailing-slash consistency
 
-Some directory-backed Netlify pages resolve to trailing-slash URLs while canonical tags use clean URLs without a trailing slash. The current routing tests show no redirect loop, but live canonical/redirect behavior should be rechecked after DNS repair.
+Some directory-backed Netlify pages resolve to trailing-slash URLs while canonical tags use clean URLs without a trailing slash. The current routing tests show no redirect loop, but live canonical/redirect behavior should be rechecked after the DNS consolidation above.
 
 ## Manual Testing Checklist
 
-1. Confirm authoritative DNS contains only Netlify-recommended records.
+1. Confirm authoritative DNS contains only Netlify-recommended records. **Done August 7, 2026:** apex A/AAAA and `www` resolve to Netlify targets at the authoritative nameservers.
 2. Test `http`, `https`, `www`, and apex-domain behavior from multiple networks.
 3. Confirm every sitemap URL returns a complete HTTP `200` response consistently.
 4. Open a private browser session and confirm no Google Analytics or AdSense request occurs before consent.

@@ -46,7 +46,7 @@ None found in this pass. The previously quarantined pages were weak but salvagea
 
 - French pages are improved and indexable, but they are shorter than the English flagship versions. They should be expanded further if French organic search becomes a priority.
 - Older indexed articles should be periodically refreshed with more screenshots, examples, and updated policy references.
-- Live DNS, consent behavior, and Search Console indexing must still be checked after deployment.
+- DNS records are now consistent (apex and `www` point to Netlify targets as of August 7, 2026); consent behavior and Search Console indexing should still be re-checked after deployment.
 
 ## Recommended Search Console Indexing Requests
 
